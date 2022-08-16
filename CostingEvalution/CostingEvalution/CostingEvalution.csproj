@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,6 +42,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -62,19 +64,276 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="AdminPanel\Master\MST_Unit.aspx" />
+    <Content Include="AdminPanel\Security\SEC_Login.aspx" />
+    <Content Include="Content\AdminPanel\assets\build\config\postcss.config.js" />
+    <Content Include="Content\AdminPanel\assets\build\config\rollup.config.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\AdminLTE.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\CardRefresh.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\CardWidget.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\ControlSidebar.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\DirectChat.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\Dropdown.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\ExpandableTable.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\Fullscreen.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\IFrame.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\Layout.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\NavbarSearch.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\PushMenu.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\SidebarSearch.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\Toasts.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\TodoList.js" />
+    <Content Include="Content\AdminPanel\assets\build\js\Treeview.js" />
+    <Content Include="Content\AdminPanel\assets\build\npm\DocsPlugins.js" />
+    <Content Include="Content\AdminPanel\assets\build\npm\DocsPublish.js" />
+    <Content Include="Content\AdminPanel\assets\build\npm\Plugins.js" />
+    <Content Include="Content\AdminPanel\assets\build\npm\Publish.js" />
+    <Content Include="Content\AdminPanel\assets\build\npm\vnu-jar.js" />
+    <Content Include="Content\AdminPanel\assets\dist\css\adminlte.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\adminlte.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.components.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.components.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.core.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.core.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.extra-components.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.extra-components.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.light.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.light.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.pages.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.pages.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.plugins.css" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.plugins.min.css" />
+    <Content Include="Content\AdminPanel\assets\dist\img\AdminLTELogo.png" />
+    <Content Include="Content\AdminPanel\assets\dist\js\adminlte.js" />
+    <Content Include="Content\AdminPanel\assets\dist\js\adminlte.min.js" />
+    <Content Include="Content\AdminPanel\assets\dist\js\pages\dashboard2.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\chart.js\Chart.bundle.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\chart.js\Chart.bundle.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\chart.js\Chart.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\chart.js\Chart.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\chart.js\Chart.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\chart.js\Chart.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\css\all.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\css\all.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\AdminPanel\assets\plugins\icheck-bootstrap\icheck-bootstrap.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\icheck-bootstrap\icheck-bootstrap.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\jquery.mapael.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\jquery.mapael.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\france_departments.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\france_departments.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\README.txt" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\usa_states.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\usa_states.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\world_countries.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\world_countries.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\world_countries_mercator.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\world_countries_mercator.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\world_countries_miller.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mapael\maps\world_countries_miller.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mousewheel\jquery.mousewheel.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery-mousewheel\LICENSE.txt" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery\jquery.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery\jquery.slim.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery\jquery.slim.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\overlayScrollbars\css\OverlayScrollbars.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\overlayScrollbars\css\OverlayScrollbars.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\overlayScrollbars\js\jquery.overlayScrollbars.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\overlayScrollbars\js\jquery.overlayScrollbars.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\overlayScrollbars\js\OverlayScrollbars.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\overlayScrollbars\js\OverlayScrollbars.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\raphael\Gruntfile.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\raphael\license.txt" />
+    <Content Include="Content\AdminPanel\assets\plugins\raphael\raphael.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\raphael\raphael.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\raphael\raphael.no-deps.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\raphael\raphael.no-deps.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2\sweetalert2.all.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2\sweetalert2.all.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2\sweetalert2.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2\sweetalert2.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\sweetalert2\sweetalert2.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\tempusdominus-bootstrap-4\css\tempusdominus-bootstrap-4.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\tempusdominus-bootstrap-4\css\tempusdominus-bootstrap-4.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\tempusdominus-bootstrap-4\js\tempusdominus-bootstrap-4.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\tempusdominus-bootstrap-4\js\tempusdominus-bootstrap-4.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\toastr\toastr.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\toastr\toastr.min.css" />
+    <Content Include="Content\AdminPanel\assets\plugins\toastr\toastr.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\uplot\uPlot.cjs.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\uplot\uPlot.esm.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\uplot\uPlot.iife.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\uplot\uPlot.iife.min.js" />
+    <Content Include="Content\AdminPanel\assets\plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\CommonFillMethod.cs" />
-    <Content Include="App_Code\DatabaseConfig.cs" />
+    <Compile Include="App_Code\BAL\MST_UnitBAL.cs" />
+    <Compile Include="App_Code\CommonFillMethod.cs" />
+    <Compile Include="App_Code\DAL\MST_UnitDAL.cs" />
+    <Compile Include="App_Code\DatabaseConfig.cs" />
+    <Compile Include="AdminPanel\Master\MST_Unit.aspx.cs">
+      <DependentUpon>MST_Unit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Master\MST_Unit.aspx.designer.cs">
+      <DependentUpon>MST_Unit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Security\SEC_Login.aspx.cs">
+      <DependentUpon>SEC_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Security\SEC_Login.aspx.designer.cs">
+      <DependentUpon>SEC_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\BAL\SEC_UserBAL.cs" />
+    <Compile Include="App_Code\DAL\SEC_UserDAL.cs" />
+    <Compile Include="App_Code\ENT\MST_UnitENT.cs" />
+    <Compile Include="App_Code\ENT\SEC_UserENT.cs" />
+    <Compile Include="Content\MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminPanel\assets\build\config\.eslintrc.json" />
+    <Content Include="Content\AdminPanel\assets\build\npm\.eslintrc.json" />
+    <Content Include="Content\AdminPanel\assets\build\scss\adminlte.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_accent.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_animations.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_backgrounds.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_cards.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_custom-forms.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_dark-mode.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_direct-chat.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_miscellaneous.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_navbar.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_scrollbar.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_sidebar.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_toasts.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\mixins\_touch-support.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_404_500_errors.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_e-commerce.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_iframe.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_invoice.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_kanban.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_lockscreen.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_login_and_register.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_mailbox.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_profile.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\pages\_projects.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\adminlte.components.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\adminlte.core.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\adminlte.extra-components.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\adminlte.light.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\adminlte.pages.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\adminlte.plugins.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\_components.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\_core.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\_extra-components.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\_miscellaneous.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\_pages.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\parts\_plugins.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_bootstrap-slider.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_bootstrap-switch.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_daterangepicker.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_fullcalendar.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_icheck-bootstrap.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_jqvmap.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_mapael.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_miscellaneous.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_mixins.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_pace.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_select2.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_sweetalert2.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\plugins\_toastr.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_adminlte.raw.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_alerts.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_animation-effects.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_bootstrap-variables.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_brand.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_buttons.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_callout.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_cards.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_carousel.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_close.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_colors.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_control-sidebar.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_direct-chat.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_dropdown.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_elevation.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_forms.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_info-box.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_layout.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_main-header.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_main-sidebar.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_miscellaneous.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_mixins.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_modals.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_navs.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_pagination.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_preloader.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_print.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_products.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_progress-bars.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_root.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_sidebar-mini.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_small-box.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_social-widgets.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_table.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_text.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_timeline.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_toasts.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_users-list.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_variables-alt.scss" />
+    <Content Include="Content\AdminPanel\assets\build\scss\_variables.scss" />
+    <Content Include="Content\AdminPanel\assets\dist\css\adminlte.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\adminlte.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.components.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.components.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.core.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.core.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.extra-components.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.extra-components.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.light.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.light.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.pages.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.pages.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.plugins.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\css\alt\adminlte.plugins.min.css.map" />
+    <Content Include="Content\AdminPanel\assets\dist\js\.eslintrc.json" />
+    <Content Include="Content\AdminPanel\assets\dist\js\adminlte.js.map" />
+    <Content Include="Content\AdminPanel\assets\dist\js\adminlte.min.js.map" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery\jquery.min.map" />
+    <Content Include="Content\AdminPanel\assets\plugins\jquery\jquery.slim.min.map" />
+    <Content Include="Content\AdminPanel\assets\plugins\toastr\toastr.js.map" />
+    <Content Include="Content\MasterPage.Master" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\AdminPanel\assets\plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\AdminPanel\assets\plugins\icheck-bootstrap\LICENSE" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -83,13 +342,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AdminPanel\" />
-    <Folder Include="App_Code\BAL\" />
-    <Folder Include="App_Code\DAL\" />
-    <Folder Include="App_Code\ENT\" />
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -115,11 +368,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

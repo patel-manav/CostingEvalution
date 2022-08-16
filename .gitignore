@@ -279,3 +279,77 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+
+# System / Log files
+*.DS_Store
+*.log
+
+# Archives
+*.zip
+
+# Sass Cache
+.sass-cache
+
+# Project files
+.idea
+nbproject
+nbproject/private
+.vscode/
+.vs/
+
+# Node / Bower
+node_modules/
+bower_components/
+
+# Plugins
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/*.html
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/*.less
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/*.md
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/*.scss
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/*.ts
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/bower.json
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/package.json
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/webpack.config.js
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/demo/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/demos/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/dev/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/example/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/examples/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/less/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/test/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/tests/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/daterangepicker/website/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/daterangepicker/drp.png
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/daterangepicker/moment.min.js
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/daterangepicker/package.js
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/daterangepicker/website.css
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/daterangepicker/website.js
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/jquery-ui/AUTHORS.txt
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/jquery-ui/external/jquery/jquery.js
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/inputmask/bindings/
+CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/flot/plugins/jquery*.js
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/flot/plugins/jquery.flot.*.js
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/LICENSE.md
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/LICENSE.txt
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/license.md
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/license.txt
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/LICENSE
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/license
+!CostingEvalution/CostingEvalution/Content/AdminPanel/assets/plugins/**/COPYING
+
+
+# Docs
+/docs/_site/
+/docs/vendor/
+/docs/.bundle/
+/docs_html/
+.jekyll-cache/
+.jekyll-metadata
+
+# ETC
+TODO
+test.html
+ad.js
+/.cache/
