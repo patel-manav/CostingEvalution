@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace CostingEvalution.AdminPanel.Master
 {
-    public partial class MST_Unit : System.Web.UI.Page
+    public partial class MST_Department : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,16 +29,16 @@ namespace CostingEvalution.AdminPanel.Master
         private void FillGridView()
         {
             #region Variable
-            MST_UnitBAL balMST_Unit = new MST_UnitBAL();
+            MST_DepartmentBAL balMST_Department = new MST_DepartmentBAL();
             #endregion Variable
 
             #region Bind Data
-            DataTable dt = balMST_Unit.Select();
+            DataTable dt = balMST_Department.Select();
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                gvUnit.DataSource = dt;
-                gvUnit.DataBind();
+                gvDepartment.DataSource = dt;
+                gvDepartment.DataBind();
             }
             #endregion Bind Data
 
@@ -51,50 +51,48 @@ namespace CostingEvalution.AdminPanel.Master
         protected void btnSave_Click(object sender, EventArgs e)
         {
             #region Variable
-            MST_UnitENT entMST_Unit = new MST_UnitENT();
-            MST_UnitBAL balMST_Unit = new MST_UnitBAL();
+            MST_DepartmentENT entMST_Department = new MST_DepartmentENT();
+            MST_DepartmentBAL balMST_Department = new MST_DepartmentBAL();
             #endregion Variable
 
             #region Validation
-            if (txtUnitName.Text.Trim() == "")
+            if (txtDepartmentName.Text.Trim() == "")
             {
                 ClearValidation();
-                lblUnitName.Visible = true;
+                lblDepartmentName.Visible = true;
                 return;
             }
             #endregion Validation
 
             #region Gather Data
-            if (hfUnitID.Value != "")
+            if (hfDepartmentID.Value != "")
             {
-                entMST_Unit.UnitID = Convert.ToInt32(hfUnitID.Value.Trim());
+                entMST_Department.DepartmentID = Convert.ToInt32(hfDepartmentID.Value.Trim());
             }
 
-            if (txtUnitName.Text.Trim() != "")
+            if (txtDepartmentName.Text.Trim() != "")
             {
-                entMST_Unit.UnitName = txtUnitName.Text.Trim();
+                entMST_Department.DepartmentName = txtDepartmentName.Text.Trim();
             }
 
-            if (txtUnitDescription.Text.Trim() != "")
+            if (txtDepartmentDescription.Text.Trim() != "")
             {
-                entMST_Unit.Description = txtUnitDescription.Text.Trim();
+                entMST_Department.Description = txtDepartmentDescription.Text.Trim();
             }
 
-
-
-            entMST_Unit.CreateDateTime = DateTime.Now;
-            entMST_Unit.CreateBy = Convert.ToInt32(Session["UserID"]);
-            entMST_Unit.CreateIP = Session["IP"].ToString();
-            entMST_Unit.UpdateDateTime = DateTime.Now;
-            entMST_Unit.UpdateBy = Convert.ToInt32(Session["UserID"]);
-            entMST_Unit.UpdateIP = Session["IP"].ToString();
+            entMST_Department.CreateDateTime = DateTime.Now;
+            entMST_Department.CreateBy = Convert.ToInt32(Session["UserID"]);
+            entMST_Department.CreateIP = Session["IP"].ToString();
+            entMST_Department.UpdateDateTime = DateTime.Now;
+            entMST_Department.UpdateBy = Convert.ToInt32(Session["UserID"]);
+            entMST_Department.UpdateIP = Session["IP"].ToString();
 
             #endregion Gather Data
 
             #region Insert/Update
-            if (hfUnitID.Value != "")
+            if (hfDepartmentID.Value != "")
             {
-                if (balMST_Unit.Update(entMST_Unit))
+                if (balMST_Department.Update(entMST_Department))
                 {
                     ClearControl();
                     ClearValidation();
@@ -106,7 +104,7 @@ namespace CostingEvalution.AdminPanel.Master
             }
             else
             {
-                if (balMST_Unit.Insert(entMST_Unit))
+                if (balMST_Department.Insert(entMST_Department))
                 {
                     ClearControl();
                     ClearValidation();
@@ -132,26 +130,26 @@ namespace CostingEvalution.AdminPanel.Master
         private void ClearControl()
         {
             FillGridView();
-            hfUnitID.Value = null;
-            txtUnitName.Text = "";
-            txtUnitDescription.Text = "";
+            hfDepartmentID.Value = null;
+            txtDepartmentName.Text = "";
+            txtDepartmentDescription.Text = "";
         }
         #endregion Clear Control
 
         #region Clear Validation
         private void ClearValidation()
         {
-            lblUnitName.Visible = false;
+            lblDepartmentName.Visible = false;
         }
         #endregion Clear Validation
 
         #endregion Clear Control
 
         #region Delete/Update
-        protected void gvUnit_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvDepartment_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             #region Variable
-            MST_UnitBAL balMST_Unit = new MST_UnitBAL();
+            MST_DepartmentBAL balMST_Department = new MST_DepartmentBAL();
             #endregion Variable
 
             #region Clear Validation
@@ -161,7 +159,7 @@ namespace CostingEvalution.AdminPanel.Master
             #region Delete Record
             if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
             {
-                if (balMST_Unit.Delete(Convert.ToInt32(e.CommandArgument)))
+                if (balMST_Department.Delete(Convert.ToInt32(e.CommandArgument)))
                 {
                     ClearControl();
                 }
@@ -185,33 +183,33 @@ namespace CostingEvalution.AdminPanel.Master
         private void FillDataByPK(SqlInt32 EmployeeDesignationID)
         {
             #region Variable
-            MST_UnitBAL balMST_Unit = new MST_UnitBAL();
-            MST_UnitENT entMST_Unit = balMST_Unit.SelectPK(EmployeeDesignationID);
+            MST_DepartmentBAL balMST_Department = new MST_DepartmentBAL();
+            MST_DepartmentENT entMST_Department = balMST_Department.SelectPK(EmployeeDesignationID);
             #endregion Variable
 
             #region Fill Data
-            if (!entMST_Unit.UnitID.IsNull)
+            if (!entMST_Department.DepartmentID.IsNull)
             {
-                hfUnitID.Value = entMST_Unit.UnitID.Value.ToString();
+                hfDepartmentID.Value = entMST_Department.DepartmentID.Value.ToString();
             }
-            if (!entMST_Unit.UnitName.IsNull)
+            if (!entMST_Department.DepartmentName.IsNull)
             {
-                txtUnitName.Text = entMST_Unit.UnitName.Value;
+                txtDepartmentName.Text = entMST_Department.DepartmentName.Value;
             }
-            if (!entMST_Unit.Description.IsNull)
+            if (!entMST_Department.Description.IsNull)
             {
-                txtUnitDescription.Text = entMST_Unit.Description.Value.ToString();
+                txtDepartmentDescription.Text = entMST_Department.Description.Value.ToString();
             }
             #endregion Fill Data
         }
         #endregion FillDataByPK
 
         #region PageIndex Change
-        protected void gvUnit_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gvDepartment_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvUnit.PageIndex = e.NewPageIndex;
+            gvDepartment.PageIndex = e.NewPageIndex;
             FillGridView();
-            gvUnit.DataBind();
+            gvDepartment.DataBind();
         }
         #endregion PageIndex Change
     }

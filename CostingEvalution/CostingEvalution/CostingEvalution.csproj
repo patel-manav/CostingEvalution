@@ -64,6 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminPanel\Master\MST_Department.aspx" />
+    <Content Include="AdminPanel\Master\MST_RawMaterial.aspx" />
     <Content Include="AdminPanel\Master\MST_Unit.aspx" />
     <Content Include="AdminPanel\Security\SEC_Login.aspx" />
     <Content Include="Content\AdminPanel\assets\build\config\postcss.config.js" />
@@ -177,8 +179,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPanel\Master\MST_Department.aspx.cs">
+      <DependentUpon>MST_Department.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Master\MST_Department.aspx.designer.cs">
+      <DependentUpon>MST_Department.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Master\MST_RawMaterial.aspx.cs">
+      <DependentUpon>MST_RawMaterial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Master\MST_RawMaterial.aspx.designer.cs">
+      <DependentUpon>MST_RawMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\BAL\MST_DepartmentBAL.cs" />
+    <Compile Include="App_Code\BAL\MST_RawMaterialBAL.cs" />
     <Compile Include="App_Code\BAL\MST_UnitBAL.cs" />
-    <Compile Include="App_Code\CommonFillMethod.cs" />
+    <Compile Include="App_Code\CommonFillMethods.cs" />
+    <Compile Include="App_Code\DAL\MST_DepartmentDAL.cs" />
+    <Compile Include="App_Code\DAL\MST_RawMaterialDAL.cs" />
     <Compile Include="App_Code\DAL\MST_UnitDAL.cs" />
     <Compile Include="App_Code\DatabaseConfig.cs" />
     <Compile Include="AdminPanel\Master\MST_Unit.aspx.cs">
@@ -197,6 +217,8 @@
     </Compile>
     <Compile Include="App_Code\BAL\SEC_UserBAL.cs" />
     <Compile Include="App_Code\DAL\SEC_UserDAL.cs" />
+    <Compile Include="App_Code\ENT\MST_DepartmentENT.cs" />
+    <Compile Include="App_Code\ENT\MST_RawMaterialENT.cs" />
     <Compile Include="App_Code\ENT\MST_UnitENT.cs" />
     <Compile Include="App_Code\ENT\SEC_UserENT.cs" />
     <Compile Include="Content\MasterPage.Master.cs">
