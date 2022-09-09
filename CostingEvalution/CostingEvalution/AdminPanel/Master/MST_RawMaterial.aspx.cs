@@ -103,7 +103,7 @@ namespace CostingEvalution.AdminPanel.Master
 
             if (txtRawMaterialPrice.Text.Trim() != "")
             {
-                entMST_RawMaterial.RawMaterialPrice = Convert.ToDouble(txtRawMaterialPrice.Text);
+                entMST_RawMaterial.RawMaterialPrice = Convert.ToDecimal(txtRawMaterialPrice.Text);
             }
 
             if (txtRawMaterialDescription.Text.Trim() != "")

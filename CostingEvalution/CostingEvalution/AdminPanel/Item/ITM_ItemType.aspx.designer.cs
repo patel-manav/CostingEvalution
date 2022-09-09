@@ -7,83 +7,74 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CostingEvalution.Content
+namespace CostingEvalution.AdminPanel.Item
 {
 
 
-    public partial class MasterPage
+    public partial class ITM_ItemType
     {
 
         /// <summary>
-        /// Head control.
+        /// hfItemTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
+        protected global::System.Web.UI.WebControls.HiddenField hfItemTypeID;
 
         /// <summary>
-        /// FormBody control.
+        /// lblItemTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm FormBody;
+        protected global::System.Web.UI.WebControls.Label lblItemTypeName;
 
         /// <summary>
-        /// btnLogout control.
+        /// txtItemTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+        protected global::System.Web.UI.WebControls.TextBox txtItemTypeName;
 
         /// <summary>
-        /// btnChangePassword control.
+        /// txtItemTypeDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnChangePassword;
+        protected global::System.Web.UI.WebControls.TextBox txtItemTypeDescription;
 
         /// <summary>
-        /// Menu control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Menu;
+        protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
-        /// PageHeading control.
+        /// btnClear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder PageHeading;
+        protected global::System.Web.UI.WebControls.Button btnClear;
 
         /// <summary>
-        /// MainBody control.
+        /// gvItemType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainBody;
-
-        /// <summary>
-        /// cphScript control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphScript;
+        protected global::System.Web.UI.WebControls.GridView gvItemType;
     }
 }

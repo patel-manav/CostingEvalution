@@ -18,7 +18,7 @@
             <!-- /.login-logo -->
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <p class="h1"><b>Costing </b>Evalution</p>
+                    <p class="h1"><b>Costing </b>Evaluation</p>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">SIGN IN TO START YOUR SESSION</p>

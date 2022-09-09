@@ -10,12 +10,12 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for SEC_UserDAL
+/// Summary description for SEC_MenuDAL
 /// </summary>
 /// 
 namespace CostingEvalution.App_Code.DAL
 {
-    public class SEC_UserDAL : DatabaseConfig
+    public class SEC_MenuDAL : DatabaseConfig
     {
         #region Local variables
 
@@ -36,7 +36,7 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Local variables
 
         #region Constructor
-        public SEC_UserDAL()
+        public SEC_MenuDAL()
         {
             //
             // TODO: Add constructor logic here
@@ -46,7 +46,7 @@ namespace CostingEvalution.App_Code.DAL
     
         #region Insert Operation
 
-        public Boolean Insert(SEC_UserENT entSEC_User)
+        public Boolean Insert(SEC_MenuENT entSEC_Menu)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -59,23 +59,21 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Insert";
+                        objCmd.CommandText = "SP_SEC_Menu_Insert";
                         
-                        objCmd.Parameters.Add("@UserID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
-                        objCmd.Parameters.AddWithValue("@UserName", entSEC_User.UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", entSEC_User.UserDisplayName);
-                        objCmd.Parameters.AddWithValue("@UserPassword", entSEC_User.UserPassword);
-                        objCmd.Parameters.AddWithValue("@Description", entSEC_User.Description);
-                        objCmd.Parameters.AddWithValue("@CreateDateTime", entSEC_User.CreateDateTime);
-                        objCmd.Parameters.AddWithValue("@CreateIP", entSEC_User.CreateIP);
-                        objCmd.Parameters.AddWithValue("@CreateBy", entSEC_User.CreateBy);
-                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entSEC_User.UpdateDateTime);
-                        objCmd.Parameters.AddWithValue("@UpdateIP", entSEC_User.UpdateIP);
-                        objCmd.Parameters.AddWithValue("@UpdateBy", entSEC_User.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@MenuName", entSEC_Menu.MenuName);
+                        objCmd.Parameters.AddWithValue("@MenuImagePath", entSEC_Menu.MenuImagePath);
+                        objCmd.Parameters.AddWithValue("@MenuURL", entSEC_Menu.MenuURL);
+                        objCmd.Parameters.AddWithValue("@MenuSequence", entSEC_Menu.MenuSequence);
+                        objCmd.Parameters.AddWithValue("@CreateDateTime", entSEC_Menu.CreateDateTime);
+                        objCmd.Parameters.AddWithValue("@CreateBy", entSEC_Menu.CreateBy);
+                        objCmd.Parameters.AddWithValue("@CreateIP", entSEC_Menu.CreateIP);
+                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entSEC_Menu.UpdateDateTime);
+                        objCmd.Parameters.AddWithValue("@UpdateBy", entSEC_Menu.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@UpdateIP", entSEC_Menu.UpdateIP);
                         #endregion Prepare Command
 
-                        objCmd.ExecuteNonQuery();
-                        entSEC_User.UserID = Convert.ToInt32(objCmd.Parameters["@UserID"].Value);
+                        objCmd.ExecuteNonQuery();                        
 
                         return true;
                     }
@@ -103,7 +101,7 @@ namespace CostingEvalution.App_Code.DAL
 
         #region Update Operation
 
-        public Boolean Update(SEC_UserENT entSEC_User)
+        public Boolean Update(SEC_MenuENT entSEC_Menu)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -116,19 +114,19 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Update";
+                        objCmd.CommandText = "SP_SEC_Menu_Update";
 
-                        objCmd.Parameters.AddWithValue("@UserID", entSEC_User.UserID);
-                        objCmd.Parameters.AddWithValue("@UserName", entSEC_User.UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", entSEC_User.UserDisplayName);
-                        objCmd.Parameters.AddWithValue("@UserPassword", entSEC_User.UserPassword);
-                        objCmd.Parameters.AddWithValue("@Description", entSEC_User.Description);
-                        objCmd.Parameters.AddWithValue("@CreateDateTime", entSEC_User.CreateDateTime);
-                        objCmd.Parameters.AddWithValue("@CreateIP", entSEC_User.CreateIP);
-                        objCmd.Parameters.AddWithValue("@CreateBy", entSEC_User.CreateBy);
-                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entSEC_User.UpdateDateTime);
-                        objCmd.Parameters.AddWithValue("@UpdateIP", entSEC_User.UpdateIP);
-                        objCmd.Parameters.AddWithValue("@UpdateBy", entSEC_User.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@MenuID", entSEC_Menu.MenuID);
+                        objCmd.Parameters.AddWithValue("@MenuName", entSEC_Menu.MenuName);
+                        objCmd.Parameters.AddWithValue("@MenuImagePath", entSEC_Menu.MenuImagePath);
+                        objCmd.Parameters.AddWithValue("@MenuURL", entSEC_Menu.MenuURL);
+                        objCmd.Parameters.AddWithValue("@MenuSequence", entSEC_Menu.MenuSequence);
+                        objCmd.Parameters.AddWithValue("@CreateDateTime", entSEC_Menu.CreateDateTime);
+                        objCmd.Parameters.AddWithValue("@CreateBy", entSEC_Menu.CreateBy);
+                        objCmd.Parameters.AddWithValue("@CreateIP", entSEC_Menu.CreateIP);
+                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entSEC_Menu.UpdateDateTime);
+                        objCmd.Parameters.AddWithValue("@UpdateBy", entSEC_Menu.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@UpdateIP", entSEC_Menu.UpdateIP);
 
                         #endregion Prepare Command
 
@@ -160,7 +158,7 @@ namespace CostingEvalution.App_Code.DAL
 
         #region Delete Operation
 
-        public Boolean Delete(SqlInt32 UserID)
+        public Boolean Delete(SqlInt32 MenuID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -173,9 +171,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Delete";
+                        objCmd.CommandText = "SP_SEC_Menu_Delete";
                         
-                        objCmd.Parameters.AddWithValue("@UserID", UserID);            
+                        objCmd.Parameters.AddWithValue("@MenuID", MenuID);            
                         #endregion Prepare Command
 
                         objCmd.ExecuteNonQuery();
@@ -207,7 +205,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select(SqlString UserName, SqlString UserDisplayName)
+        public DataTable Select()
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -220,10 +218,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Select";
+                        objCmd.CommandText = "SP_SEC_Menu_Select";
 
-                        objCmd.Parameters.AddWithValue("@UserName", UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", UserDisplayName);
+                        
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
@@ -261,7 +258,7 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Select
         
         #region Select PK
-        public SEC_UserENT SelectPK(SqlInt32 UserID)
+        public SEC_MenuENT SelectPK(SqlInt32 MenuID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -274,13 +271,13 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Variables
 						DataTable dt = new DataTable();
-                        SEC_UserENT entSEC_User = new SEC_UserENT();
+                        SEC_MenuENT entSEC_Menu = new SEC_MenuENT();
                         #endregion Variables
 
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_SelectPK";
-                        objCmd.Parameters.AddWithValue("@UserID", UserID);
+                        objCmd.CommandText = "SP_SEC_Menu_SelectPK";
+                        objCmd.Parameters.AddWithValue("@MenuID", MenuID);
                         #endregion Prepare Command
 
                         #region Set Controls
@@ -290,62 +287,62 @@ namespace CostingEvalution.App_Code.DAL
                         }
 						foreach (DataRow dr in dt.Rows)
 						{
-							if (!dr["UserID"].Equals(DBNull.Value))
+							if (!dr["MenuID"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UserID = Convert.ToInt32(dr["UserID"]);
+                                entSEC_Menu.MenuID = Convert.ToInt32(dr["MenuID"]);
                             }
 
-                            if (!dr["UserName"].Equals(DBNull.Value))
+                            if (!dr["MenuName"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UserName = Convert.ToString(dr["UserName"]);
+                                entSEC_Menu.MenuName = Convert.ToString(dr["MenuName"]);
                             }
 
-                            if (!dr["UserDisplayName"].Equals(DBNull.Value))
+                            if (!dr["MenuImagePath"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UserDisplayName = Convert.ToString(dr["UserDisplayName"]);
+                                entSEC_Menu.MenuImagePath = Convert.ToString(dr["MenuImagePath"]);
                             }
 
-                            if (!dr["UserPassword"].Equals(DBNull.Value))
+                            if (!dr["MenuURL"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UserPassword = Convert.ToString(dr["UserPassword"]);
+                                entSEC_Menu.MenuURL = Convert.ToString(dr["MenuURL"]);
                             }
 
-                            if (!dr["Description"].Equals(DBNull.Value))
+                            if (!dr["MenuSequence"].Equals(DBNull.Value))
                             {
-                                entSEC_User.Description = Convert.ToString(dr["Description"]);
+                                entSEC_Menu.MenuSequence = Convert.ToDecimal(dr["MenuSequence"]);
                             }
 
                             if (!dr["CreateDateTime"].Equals(DBNull.Value))
                             {
-                                entSEC_User.CreateDateTime = Convert.ToDateTime(dr["CreateDateTime"]);
-                            }
-
-                            if (!dr["CreateIP"].Equals(DBNull.Value))
-                            {
-                                entSEC_User.CreateIP = Convert.ToString(dr["CreateIP"]);
+                                entSEC_Menu.CreateDateTime = Convert.ToDateTime(dr["CreateDateTime"]);
                             }
 
                             if (!dr["CreateBy"].Equals(DBNull.Value))
                             {
-                                entSEC_User.CreateBy = Convert.ToInt32(dr["CreateBy"]);
+                                entSEC_Menu.CreateBy = Convert.ToInt32(dr["CreateBy"]);
+                            }
+
+                            if (!dr["CreateIP"].Equals(DBNull.Value))
+                            {
+                                entSEC_Menu.CreateIP = Convert.ToString(dr["CreateIP"]);
                             }
 
                             if (!dr["UpdateDateTime"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UpdateDateTime = Convert.ToDateTime(dr["UpdateDateTime"]);
-                            }
-
-                            if (!dr["UpdateIP"].Equals(DBNull.Value))
-                            {
-                                entSEC_User.UpdateIP = Convert.ToString(dr["UpdateIP"]);
+                                entSEC_Menu.UpdateDateTime = Convert.ToDateTime(dr["UpdateDateTime"]);
                             }
 
                             if (!dr["UpdateBy"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UpdateBy = Convert.ToInt32(dr["UpdateBy"]);
+                                entSEC_Menu.UpdateBy = Convert.ToInt32(dr["UpdateBy"]);
+                            }
+
+                            if (!dr["UpdateIP"].Equals(DBNull.Value))
+                            {
+                                entSEC_Menu.UpdateIP = Convert.ToString(dr["UpdateIP"]);
                             }
 						}
-						return entSEC_User;
+						return entSEC_Menu;
 
                         #endregion Set Controls
                     }
@@ -387,7 +384,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_SelectForDropDown";
+                        objCmd.CommandText = "SP_SEC_Menu_SelectForDropDown";
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
@@ -425,10 +422,8 @@ namespace CostingEvalution.App_Code.DAL
 
         #endregion Select For Dropdownlist
 
-        #endregion Select Operation
-
-        #region UserSignIn
-        public DataTable UserSignIn(String UserName, String UserPassword)
+        #region FillMenu
+        public DataTable FillMenu(SqlInt32 UserID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -441,9 +436,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SEC_Login_Select";
-                        objCmd.Parameters.AddWithValue("@UserName", UserName);
-                        objCmd.Parameters.AddWithValue("@UserPassword", UserPassword);
+                        objCmd.CommandText = "SP_Menu_Fill";
+                        objCmd.Parameters.AddWithValue("@UserID", UserID);
+
 
                         #endregion Prepare Command
 
@@ -476,8 +471,11 @@ namespace CostingEvalution.App_Code.DAL
                             objConn.Close();
                     }
                 }
+
             }
         }
-        #endregion UserSignIn
+        #endregion FillMenu
+
+        #endregion Select Operation
     }
 }

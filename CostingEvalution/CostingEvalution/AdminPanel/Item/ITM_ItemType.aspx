@@ -1,25 +1,25 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterPage.Master" AutoEventWireup="true" CodeBehind="MST_Department.aspx.cs" Inherits="CostingEvalution.AdminPanel.Master.MST_Department" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterPage.Master" AutoEventWireup="true" CodeBehind="ITM_ItemType.aspx.cs" Inherits="CostingEvalution.AdminPanel.Item.ITM_ItemType" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PageHeading" runat="server">
-    <b>Department</b>
+    <b>Item Type</b>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainBody" runat="server">
     <div class="row">
-        <asp:HiddenField runat="server" ID="hfDepartmentID" />
+        <asp:HiddenField runat="server" ID="hfItemTypeID" />
 
         <div class="col-md-3 form-group">
             Name*
-            <asp:Label runat="server" ID="lblDepartmentName" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
-            <asp:TextBox runat="server" ID="txtDepartmentName" CssClass="form-control" AutoCompleteType="Disabled" />
+            <asp:Label runat="server" ID="lblItemTypeName" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
+            <asp:TextBox runat="server" ID="txtItemTypeName" CssClass="form-control" AutoCompleteType="Disabled" />
         </div>
 
         <div class="col-md-3">
             Description
-            <asp:TextBox runat="server" ID="txtDepartmentDescription" CssClass="form-control" AutoCompleteType="Disabled" />
+            <asp:TextBox runat="server" ID="txtItemTypeDescription" CssClass="form-control" AutoCompleteType="Disabled" />
         </div>
 
         <div class="col-md-2 mt-4">
@@ -33,15 +33,15 @@
 
     <div class="row mt-5">
         <div class="col-md-12 table-responsive">
-            <asp:GridView ID="gvDepartment" runat="server" ClientIDMode="Static" CssClass="table table-hover" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnPageIndexChanging="gvDepartment_PageIndexChanging" OnRowCommand="gvDepartment_RowCommand">
+            <asp:GridView ID="gvItemType" runat="server" ClientIDMode="Static" CssClass="table table-hover" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnPageIndexChanging="gvItemType_PageIndexChanging" OnRowCommand="gvItemType_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="DepartmentName" HeaderText="Name" />
+                    <asp:BoundField DataField="ItemTypeName" HeaderText="Name" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
 
                     <asp:TemplateField ItemStyle-CssClass="text-center">
                         <ItemTemplate>
                             <%--<asp:LinkButton ID="btnDelete" CommandName="DeleteRecord" CommandArgument='<%# Eval("EmployeeDesignationID") %>' CssClass="fa fa-trash-alt mr-2 text-danger" runat="server"></asp:LinkButton>--%>
-                            <asp:LinkButton ID="btnEdit" CommandName="EditRecord" CommandArgument='<%# Eval("DepartmentID") %>' CssClass="fas fa-edit text-warning" runat="server"></asp:LinkButton>
+                            <asp:LinkButton ID="btnEdit" CommandName="EditRecord" CommandArgument='<%# Eval("ItemTypeID") %>' CssClass="fas fa-edit text-warning" runat="server"></asp:LinkButton>
                         </ItemTemplate>
 
                     </asp:TemplateField>
@@ -50,6 +50,5 @@
         </div>
     </div>
 </asp:Content>
-
 <asp:Content ID="Content4" ContentPlaceHolderID="cphScript" runat="server">
 </asp:Content>

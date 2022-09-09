@@ -5,15 +5,15 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for MST_RawMaterialENT
+/// Summary description for SEC_MenuENT
 /// </summary>
 /// 
 namespace CostingEvalution.App_Code.ENT
 {
-    public class MST_RawMaterialENT
+    public class SEC_MenuENT
     {
         #region Constructor
-        public MST_RawMaterialENT()
+        public SEC_MenuENT()
         {
             //
             // TODO: Add constructor logic here
@@ -21,85 +21,86 @@ namespace CostingEvalution.App_Code.ENT
         }
         #endregion Constructor
         
-        #region RawMaterialID
-        protected SqlInt32 _RawMaterialID;
+        
+        #region MenuID
+        protected SqlInt32 _MenuID;
 
-        public SqlInt32 RawMaterialID
+        public SqlInt32 MenuID
         {
             get
             {
-                return _RawMaterialID;
+                return _MenuID;
             }
             set
             {
-                _RawMaterialID = value;
+                _MenuID = value;
             }
         }
-        #endregion RawMaterialID
+        #endregion MenuID
 
-        #region RawMaterialName
-        protected SqlString _RawMaterialName;
+        #region MenuName
+        protected SqlString _MenuName;
 
-        public SqlString RawMaterialName
+        public SqlString MenuName
         {
             get
             {
-                return _RawMaterialName;
+                return _MenuName;
             }
             set
             {
-                _RawMaterialName = value;
+                _MenuName = value;
             }
         }
-        #endregion RawMaterialName
+        #endregion MenuName
 
-        #region UnitID
-        protected SqlInt32 _UnitID;
+        #region MenuImagePath
+        protected SqlString _MenuImagePath;
 
-        public SqlInt32 UnitID
+        public SqlString MenuImagePath
         {
             get
             {
-                return _UnitID;
+                return _MenuImagePath;
             }
             set
             {
-                _UnitID = value;
+                _MenuImagePath = value;
             }
         }
-        #endregion UnitID
+        #endregion MenuImagePath
 
-        #region RawMaterialPrice
-        protected SqlDecimal _RawMaterialPrice;
+        #region MenuURL
+        protected SqlString _MenuURL;
 
-        public SqlDecimal RawMaterialPrice
+        public SqlString MenuURL
         {
             get
             {
-                return _RawMaterialPrice;
+                return _MenuURL;
             }
             set
             {
-                _RawMaterialPrice = value;
+                _MenuURL = value;
             }
         }
-        #endregion RawMaterialName
+        #endregion MenuURL
 
-        #region Description
-        protected SqlString _Description;
+        #region MenuSequence
+        protected SqlDecimal _MenuSequence;
 
-        public SqlString Description
+        public SqlDecimal MenuSequence
         {
             get
             {
-                return _Description;
+                return _MenuSequence;
             }
             set
             {
-                _Description = value;
+                _MenuSequence = value;
             }
         }
-        #endregion Description
+        #endregion MenuSequence
 
         #region CreateDateTime
         protected SqlDateTime _CreateDateTime;

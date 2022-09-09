@@ -7,83 +7,92 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CostingEvalution.Content
+namespace CostingEvalution.AdminPanel.Product
 {
 
 
-    public partial class MasterPage
+    public partial class PRD_Question
     {
 
         /// <summary>
-        /// Head control.
+        /// hfQuestionID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
+        protected global::System.Web.UI.WebControls.HiddenField hfQuestionID;
 
         /// <summary>
-        /// FormBody control.
+        /// lblQuestionName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm FormBody;
+        protected global::System.Web.UI.WebControls.Label lblQuestionName;
 
         /// <summary>
-        /// btnLogout control.
+        /// txtQuestionName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+        protected global::System.Web.UI.WebControls.TextBox txtQuestionName;
 
         /// <summary>
-        /// btnChangePassword control.
+        /// lblItemType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnChangePassword;
+        protected global::System.Web.UI.WebControls.Label lblItemType;
 
         /// <summary>
-        /// Menu control.
+        /// ddlItemType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Menu;
+        protected global::System.Web.UI.WebControls.DropDownList ddlItemType;
 
         /// <summary>
-        /// PageHeading control.
+        /// txtQuestionDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder PageHeading;
+        protected global::System.Web.UI.WebControls.TextBox txtQuestionDescription;
 
         /// <summary>
-        /// MainBody control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainBody;
+        protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
-        /// cphScript control.
+        /// btnClear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphScript;
+        protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
+        /// gvQuestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvQuestion;
     }
 }

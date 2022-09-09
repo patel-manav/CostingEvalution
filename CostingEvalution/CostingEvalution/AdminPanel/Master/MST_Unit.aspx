@@ -37,7 +37,6 @@
                 <Columns>
                     <asp:BoundField DataField="UnitName" HeaderText="Name" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
-                    <asp:BoundField DataField="UpdateBy" HeaderText="EntryBy" />
 
                     <asp:TemplateField ItemStyle-CssClass="text-center">
                         <ItemTemplate>

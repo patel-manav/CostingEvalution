@@ -24,5 +24,37 @@ namespace CostingEvalution.App_Code
             }
         }
         #endregion Unit DropDown
+
+        #region User DropDown
+        public static void FillDropDownListUser(DropDownList ddl)
+        {
+            SEC_UserBAL balSEC_User = new SEC_UserBAL();
+            DataTable dt = balSEC_User.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "UserID";
+                ddl.DataTextField = "UserDisplayName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select User", "-1"));
+            }
+        }
+        #endregion User DropDown
+
+        #region ItemType DropDown
+        public static void FillDropDownListItemType(DropDownList ddl)
+        {
+            ITM_ItemTypeBAL balITM_ItemType = new ITM_ItemTypeBAL();
+            DataTable dt = balITM_ItemType.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "ItemTypeID";
+                ddl.DataTextField = "ItemTypeName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select Item-Type", "-1"));
+            }
+        }
+        #endregion ItemType DropDown
     }
 }

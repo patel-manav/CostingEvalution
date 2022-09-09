@@ -303,7 +303,7 @@ namespace CostingEvalution.App_Code.DAL
 
                             if (!dr["RawMaterialPrice"].Equals(DBNull.Value))
                             {
-                                entMST_RawMaterial.RawMaterialPrice = Convert.ToDouble(dr["RawMaterialPrice"]);
+                                entMST_RawMaterial.RawMaterialPrice = Convert.ToDecimal(dr["RawMaterialPrice"]);
                             }
 
                             if (!dr["Description"].Equals(DBNull.Value))

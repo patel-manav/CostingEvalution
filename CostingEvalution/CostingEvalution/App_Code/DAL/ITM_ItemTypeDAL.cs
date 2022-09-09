@@ -10,12 +10,12 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for SEC_UserDAL
+/// Summary description for ITM_ItemTypeDAL
 /// </summary>
 /// 
 namespace CostingEvalution.App_Code.DAL
 {
-    public class SEC_UserDAL : DatabaseConfig
+    public class ITM_ItemTypeDAL : DatabaseConfig
     {
         #region Local variables
 
@@ -36,7 +36,7 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Local variables
 
         #region Constructor
-        public SEC_UserDAL()
+        public ITM_ItemTypeDAL()
         {
             //
             // TODO: Add constructor logic here
@@ -46,7 +46,7 @@ namespace CostingEvalution.App_Code.DAL
     
         #region Insert Operation
 
-        public Boolean Insert(SEC_UserENT entSEC_User)
+        public Boolean Insert(ITM_ItemTypeENT entITM_ItemType)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -59,23 +59,20 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Insert";
-                        
-                        objCmd.Parameters.Add("@UserID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
-                        objCmd.Parameters.AddWithValue("@UserName", entSEC_User.UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", entSEC_User.UserDisplayName);
-                        objCmd.Parameters.AddWithValue("@UserPassword", entSEC_User.UserPassword);
-                        objCmd.Parameters.AddWithValue("@Description", entSEC_User.Description);
-                        objCmd.Parameters.AddWithValue("@CreateDateTime", entSEC_User.CreateDateTime);
-                        objCmd.Parameters.AddWithValue("@CreateIP", entSEC_User.CreateIP);
-                        objCmd.Parameters.AddWithValue("@CreateBy", entSEC_User.CreateBy);
-                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entSEC_User.UpdateDateTime);
-                        objCmd.Parameters.AddWithValue("@UpdateIP", entSEC_User.UpdateIP);
-                        objCmd.Parameters.AddWithValue("@UpdateBy", entSEC_User.UpdateBy);
+                        objCmd.CommandText = "SP_ITM_ItemType_Insert";
+                                    
+                        objCmd.Parameters.AddWithValue("@ItemTypeName", entITM_ItemType.ItemTypeName);
+                        objCmd.Parameters.AddWithValue("@Description", entITM_ItemType.Description);
+                        objCmd.Parameters.AddWithValue("@CreateDateTime", entITM_ItemType.CreateDateTime);
+                        objCmd.Parameters.AddWithValue("@CreateBy", entITM_ItemType.CreateBy);
+                        objCmd.Parameters.AddWithValue("@CreateIP", entITM_ItemType.CreateIP);
+                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entITM_ItemType.UpdateDateTime);
+                        objCmd.Parameters.AddWithValue("@UpdateBy", entITM_ItemType.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@UpdateIP", entITM_ItemType.UpdateIP);
                         #endregion Prepare Command
 
                         objCmd.ExecuteNonQuery();
-                        entSEC_User.UserID = Convert.ToInt32(objCmd.Parameters["@UserID"].Value);
+                    
 
                         return true;
                     }
@@ -103,7 +100,7 @@ namespace CostingEvalution.App_Code.DAL
 
         #region Update Operation
 
-        public Boolean Update(SEC_UserENT entSEC_User)
+        public Boolean Update(ITM_ItemTypeENT entITM_ItemType)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -116,19 +113,17 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Update";
+                        objCmd.CommandText = "SP_ITM_ItemType_Update";
 
-                        objCmd.Parameters.AddWithValue("@UserID", entSEC_User.UserID);
-                        objCmd.Parameters.AddWithValue("@UserName", entSEC_User.UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", entSEC_User.UserDisplayName);
-                        objCmd.Parameters.AddWithValue("@UserPassword", entSEC_User.UserPassword);
-                        objCmd.Parameters.AddWithValue("@Description", entSEC_User.Description);
-                        objCmd.Parameters.AddWithValue("@CreateDateTime", entSEC_User.CreateDateTime);
-                        objCmd.Parameters.AddWithValue("@CreateIP", entSEC_User.CreateIP);
-                        objCmd.Parameters.AddWithValue("@CreateBy", entSEC_User.CreateBy);
-                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entSEC_User.UpdateDateTime);
-                        objCmd.Parameters.AddWithValue("@UpdateIP", entSEC_User.UpdateIP);
-                        objCmd.Parameters.AddWithValue("@UpdateBy", entSEC_User.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@ItemTypeID", entITM_ItemType.ItemTypeID);
+                        objCmd.Parameters.AddWithValue("@ItemTypeName", entITM_ItemType.ItemTypeName);
+                        objCmd.Parameters.AddWithValue("@Description", entITM_ItemType.Description);
+                        objCmd.Parameters.AddWithValue("@CreateDateTime", entITM_ItemType.CreateDateTime);
+                        objCmd.Parameters.AddWithValue("@CreateBy", entITM_ItemType.CreateBy);
+                        objCmd.Parameters.AddWithValue("@CreateIP", entITM_ItemType.CreateIP);
+                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entITM_ItemType.UpdateDateTime);
+                        objCmd.Parameters.AddWithValue("@UpdateBy", entITM_ItemType.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@UpdateIP", entITM_ItemType.UpdateIP);
 
                         #endregion Prepare Command
 
@@ -160,7 +155,7 @@ namespace CostingEvalution.App_Code.DAL
 
         #region Delete Operation
 
-        public Boolean Delete(SqlInt32 UserID)
+        public Boolean Delete(SqlInt32 ItemTypeID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -173,9 +168,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Delete";
+                        objCmd.CommandText = "SP_ITM_ItemType_Delete";
                         
-                        objCmd.Parameters.AddWithValue("@UserID", UserID);            
+                        objCmd.Parameters.AddWithValue("@ItemTypeID", ItemTypeID);            
                         #endregion Prepare Command
 
                         objCmd.ExecuteNonQuery();
@@ -207,7 +202,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select(SqlString UserName, SqlString UserDisplayName)
+        public DataTable Select()
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -220,10 +215,8 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_Select";
+                        objCmd.CommandText = "SP_ITM_ItemType_Select";
 
-                        objCmd.Parameters.AddWithValue("@UserName", UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", UserDisplayName);
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
@@ -261,7 +254,7 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Select
         
         #region Select PK
-        public SEC_UserENT SelectPK(SqlInt32 UserID)
+        public ITM_ItemTypeENT SelectPK(SqlInt32 ItemTypeID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -274,13 +267,13 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Variables
 						DataTable dt = new DataTable();
-                        SEC_UserENT entSEC_User = new SEC_UserENT();
+                        ITM_ItemTypeENT entITM_ItemType = new ITM_ItemTypeENT();
                         #endregion Variables
 
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_SelectPK";
-                        objCmd.Parameters.AddWithValue("@UserID", UserID);
+                        objCmd.CommandText = "SP_ITM_ItemType_SelectPK";
+                        objCmd.Parameters.AddWithValue("@ItemTypeID", ItemTypeID);
                         #endregion Prepare Command
 
                         #region Set Controls
@@ -290,62 +283,52 @@ namespace CostingEvalution.App_Code.DAL
                         }
 						foreach (DataRow dr in dt.Rows)
 						{
-							if (!dr["UserID"].Equals(DBNull.Value))
+							if (!dr["ItemTypeID"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UserID = Convert.ToInt32(dr["UserID"]);
+                                entITM_ItemType.ItemTypeID = Convert.ToInt32(dr["ItemTypeID"]);
                             }
 
-                            if (!dr["UserName"].Equals(DBNull.Value))
+                            if (!dr["ItemTypeName"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UserName = Convert.ToString(dr["UserName"]);
-                            }
-
-                            if (!dr["UserDisplayName"].Equals(DBNull.Value))
-                            {
-                                entSEC_User.UserDisplayName = Convert.ToString(dr["UserDisplayName"]);
-                            }
-
-                            if (!dr["UserPassword"].Equals(DBNull.Value))
-                            {
-                                entSEC_User.UserPassword = Convert.ToString(dr["UserPassword"]);
+                                entITM_ItemType.ItemTypeName = Convert.ToString(dr["ItemTypeName"]);
                             }
 
                             if (!dr["Description"].Equals(DBNull.Value))
                             {
-                                entSEC_User.Description = Convert.ToString(dr["Description"]);
+                                entITM_ItemType.Description = Convert.ToString(dr["Description"]);
                             }
 
                             if (!dr["CreateDateTime"].Equals(DBNull.Value))
                             {
-                                entSEC_User.CreateDateTime = Convert.ToDateTime(dr["CreateDateTime"]);
-                            }
-
-                            if (!dr["CreateIP"].Equals(DBNull.Value))
-                            {
-                                entSEC_User.CreateIP = Convert.ToString(dr["CreateIP"]);
+                                entITM_ItemType.CreateDateTime = Convert.ToDateTime(dr["CreateDateTime"]);
                             }
 
                             if (!dr["CreateBy"].Equals(DBNull.Value))
                             {
-                                entSEC_User.CreateBy = Convert.ToInt32(dr["CreateBy"]);
+                                entITM_ItemType.CreateBy = Convert.ToInt32(dr["CreateBy"]);
+                            }
+
+                            if (!dr["CreateIP"].Equals(DBNull.Value))
+                            {
+                                entITM_ItemType.CreateIP = Convert.ToString(dr["CreateIP"]);
                             }
 
                             if (!dr["UpdateDateTime"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UpdateDateTime = Convert.ToDateTime(dr["UpdateDateTime"]);
-                            }
-
-                            if (!dr["UpdateIP"].Equals(DBNull.Value))
-                            {
-                                entSEC_User.UpdateIP = Convert.ToString(dr["UpdateIP"]);
+                                entITM_ItemType.UpdateDateTime = Convert.ToDateTime(dr["UpdateDateTime"]);
                             }
 
                             if (!dr["UpdateBy"].Equals(DBNull.Value))
                             {
-                                entSEC_User.UpdateBy = Convert.ToInt32(dr["UpdateBy"]);
+                                entITM_ItemType.UpdateBy = Convert.ToInt32(dr["UpdateBy"]);
+                            }
+
+                            if (!dr["UpdateIP"].Equals(DBNull.Value))
+                            {
+                                entITM_ItemType.UpdateIP = Convert.ToString(dr["UpdateIP"]);
                             }
 						}
-						return entSEC_User;
+						return entITM_ItemType;
 
                         #endregion Set Controls
                     }
@@ -387,7 +370,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_SEC_User_SelectForDropDown";
+                        objCmd.CommandText = "SP_ITM_ItemType_SelectForDropDown";
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
@@ -426,58 +409,5 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Select For Dropdownlist
 
         #endregion Select Operation
-
-        #region UserSignIn
-        public DataTable UserSignIn(String UserName, String UserPassword)
-        {
-            using (SqlConnection objConn = new SqlConnection(ConnectionString))
-            {
-                if (objConn.State != ConnectionState.Open)
-                    objConn.Open();
-
-                using (SqlCommand objCmd = objConn.CreateCommand())
-                {
-                    try
-                    {
-                        #region Prepare Command
-                        objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SEC_Login_Select";
-                        objCmd.Parameters.AddWithValue("@UserName", UserName);
-                        objCmd.Parameters.AddWithValue("@UserPassword", UserPassword);
-
-                        #endregion Prepare Command
-
-                        #region ReadData and Set Controls
-                        DataTable dt = new DataTable();
-                        using (SqlDataReader objSDR = objCmd.ExecuteReader())
-                        {
-                            dt.Load(objSDR);
-                        }
-                        return dt;
-
-                        #endregion ReadData and Set Controls
-                    }
-
-                    catch (SqlException sqlex)
-                    {
-                        Message = sqlex.Message.ToString();
-                        return null;
-                    }
-
-                    catch (Exception ex)
-                    {
-                        Message = ex.Message.ToString();
-                        return null;
-                    }
-
-                    finally
-                    {
-                        if (objConn.State == ConnectionState.Open)
-                            objConn.Close();
-                    }
-                }
-            }
-        }
-        #endregion UserSignIn
     }
 }

@@ -5,15 +5,15 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for MST_RawMaterialENT
+/// Summary description for ITM_ItemTypeENT
 /// </summary>
 /// 
 namespace CostingEvalution.App_Code.ENT
 {
-    public class MST_RawMaterialENT
+    public class ITM_ItemTypeENT
     {
         #region Constructor
-        public MST_RawMaterialENT()
+        public ITM_ItemTypeENT()
         {
             //
             // TODO: Add constructor logic here
@@ -21,69 +21,38 @@ namespace CostingEvalution.App_Code.ENT
         }
         #endregion Constructor
         
-        #region RawMaterialID
-        protected SqlInt32 _RawMaterialID;
+        
+        #region ItemTypeID
+        protected SqlInt32 _ItemTypeID;
 
-        public SqlInt32 RawMaterialID
+        public SqlInt32 ItemTypeID
         {
             get
             {
-                return _RawMaterialID;
+                return _ItemTypeID;
             }
             set
             {
-                _RawMaterialID = value;
+                _ItemTypeID = value;
             }
         }
-        #endregion RawMaterialID
+        #endregion ItemTypeID
 
-        #region RawMaterialName
-        protected SqlString _RawMaterialName;
+        #region ItemTypeName
+        protected SqlString _ItemTypeName;
 
-        public SqlString RawMaterialName
+        public SqlString ItemTypeName
         {
             get
             {
-                return _RawMaterialName;
+                return _ItemTypeName;
             }
             set
             {
-                _RawMaterialName = value;
+                _ItemTypeName = value;
             }
         }
-        #endregion RawMaterialName
-
-        #region UnitID
-        protected SqlInt32 _UnitID;
-
-        public SqlInt32 UnitID
-        {
-            get
-            {
-                return _UnitID;
-            }
-            set
-            {
-                _UnitID = value;
-            }
-        }
-        #endregion UnitID
-
-        #region RawMaterialPrice
-        protected SqlDecimal _RawMaterialPrice;
-
-        public SqlDecimal RawMaterialPrice
-        {
-            get
-            {
-                return _RawMaterialPrice;
-            }
-            set
-            {
-                _RawMaterialPrice = value;
-            }
-        }
-        #endregion RawMaterialName
+        #endregion ItemTypeName
 
         #region Description
         protected SqlString _Description;

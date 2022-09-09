@@ -7,83 +7,101 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CostingEvalution.Content
+namespace CostingEvalution.AdminPanel.Security
 {
 
 
-    public partial class MasterPage
+    public partial class SEC_Menu
     {
 
         /// <summary>
-        /// Head control.
+        /// hfMenuID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
+        protected global::System.Web.UI.WebControls.HiddenField hfMenuID;
 
         /// <summary>
-        /// FormBody control.
+        /// lblMenuName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm FormBody;
+        protected global::System.Web.UI.WebControls.Label lblMenuName;
 
         /// <summary>
-        /// btnLogout control.
+        /// txtMenuName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+        protected global::System.Web.UI.WebControls.TextBox txtMenuName;
 
         /// <summary>
-        /// btnChangePassword control.
+        /// lblMenuURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnChangePassword;
+        protected global::System.Web.UI.WebControls.Label lblMenuURL;
 
         /// <summary>
-        /// Menu control.
+        /// txtMenuURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Menu;
+        protected global::System.Web.UI.WebControls.TextBox txtMenuURL;
 
         /// <summary>
-        /// PageHeading control.
+        /// lblMenuSequence control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder PageHeading;
+        protected global::System.Web.UI.WebControls.Label lblMenuSequence;
 
         /// <summary>
-        /// MainBody control.
+        /// txtMenuSequence control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainBody;
+        protected global::System.Web.UI.WebControls.TextBox txtMenuSequence;
 
         /// <summary>
-        /// cphScript control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphScript;
+        protected global::System.Web.UI.WebControls.Button btnSave;
+
+        /// <summary>
+        /// btnClear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
+        /// gvMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvMenu;
     }
 }
