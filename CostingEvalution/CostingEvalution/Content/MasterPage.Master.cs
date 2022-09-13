@@ -18,7 +18,7 @@ namespace CostingEvalution.Content
                 #region CheckSession
                 if (Session["UserName"] != null && Session["UserName"].ToString() != null && Session["UserID"].ToString() != null)
                 {
-                    //UserDisplayName.Text = Session["UserDisplayName"].ToString();
+                    UserDisplayName.Text = Session["UserDisplayName"].ToString();
                     FillMenu();
                 }
                 else
@@ -74,7 +74,7 @@ namespace CostingEvalution.Content
         {
             Session.RemoveAll();
             Session.Clear();
-            Response.Redirect("../User/Login.aspx");
+            Response.Redirect(Page.ResolveClientUrl("../Security/SEC_Login.aspx"));
         }
         #endregion Logout
 

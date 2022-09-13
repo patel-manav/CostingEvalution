@@ -56,5 +56,21 @@ namespace CostingEvalution.App_Code
             }
         }
         #endregion ItemType DropDown
+
+        #region Question DropDown
+        public static void FillDropDownListQuestion(DropDownList ddl)
+        {
+            PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
+            DataTable dt = balPRD_Question.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "QuestionID";
+                ddl.DataTextField = "QuestionName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select Question", "-1"));
+            }
+        }
+        #endregion Question DropDown
     }
 }

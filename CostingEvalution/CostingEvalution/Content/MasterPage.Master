@@ -1,54 +1,51 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="CostingEvalution.Content.MasterPage" %>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <asp:ContentPlaceHolder ID="Head" runat="server">
+     <asp:ContentPlaceHolder ID="Head" runat="server">
     </asp:ContentPlaceHolder>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Costing Evalution</title>
+    <title>Costing Evaluation</title>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/fontawesome-free/css/all.min.css") %>'>
-    <link rel="stylesheet" href='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css") %>'>
-    <link rel="stylesheet" href='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/css/adminlte.min.css") %>'>
-
-
-
+    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/fontawesome-free/css/all.min.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/css/adminlte.min.css")%>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-
 <body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    <form runat="server" id="FormBody">
-
-
+    <form id="bodyForm" runat="server">
         <div class="wrapper">
 
             <!-- Preloader -->
-            <%--<div class="preloader flex-column justify-content-center align-items-center">
+            <%-- <div class="preloader flex-column justify-content-center align-items-center">
                 <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
             </div>--%>
 
-            <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand navbar-black">
-                <!-- Left navbar links -->
+            <nav class="main-header navbar navbar-expand navbar-light">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                 </ul>
 
-                <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
-                    <!-- Right Side Sign-Out -->
-                   <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fas fa-user"></i>
+                            <i class="far fa-user"></i>
                         </a>
                         <div class="dropdown-menu">
-                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="dropdown-item" OnClick="btnLogout_Click">
+                            <span class="dropdown-item dropdown-header">
+                               <h6> 
+                                   <b>Hi, </b> 
+                                   <asp:Label runat="server" ID="UserDisplayName"></asp:Label>
+                               </h6>
+                            </span>
+                            <div class="dropdown-divider"></div>
+                           <asp:LinkButton ID="btnLogout" runat="server" CssClass="dropdown-item" OnClick="btnLogout_Click">
                                 <i class="fas fa-sign-out-alt"></i>
                                 Logout
                                 </asp:LinkButton>
@@ -56,14 +53,13 @@
                             <asp:LinkButton ID="btnChangePassword" runat="server" CssClass="dropdown-item" OnClick="btnChangePassword_Click">
                                 <i class="fa fa-key" aria-hidden="true"></i>
                                 Change Password
-                            </asp:LinkButton>
+                            </asp:LinkButton>                           
                         </div>
                     </li>
                 </ul>
             </nav>
-            <!-- /.navbar -->
 
-            <!-- Main Sidebar Container -->
+           <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-light-teal elevation-2">
                 <!-- Brand Logo -->
                 <p class="brand-link">
@@ -72,27 +68,13 @@
                     <span class="brand-text font-weight-bold">Costing Evalution</span>
                 <p/>
 
-                <!-- Sidebar -->
                 <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <%--<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                           
-                            <asp:Image runat="server" ImageUrl="~/Content/AdminPanel/assets/dist/img/AdminLTELogo.png" alt="User Image" CssClass="img-circle elevation-2"/>
-                        </div>
-                        <div class="info font">
-                            <a href="#" class="d-block font-weight-bold">Admin</a>
-                        </div>
-                    </div>--%>
-
-                    <!-- Sidebar Menu -->
-
                     <asp:Repeater ID="Menu" runat="server">
                         <ItemTemplate>
                             <nav class="mt-2">
                                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                     <li class="nav-item menu-open">
-                                        <%--<i class='<%#Eval("MenuImagePath") %>'></i>--%>
+                                        <%--<i class='<%#Eval("MenuImagePath") %>'></i>--%>                                       
                                         <asp:LinkButton ID="MenuID" runat="server" CssClass="nav-link" href='<%#Eval("MenuURL") %>' Text='<%#Eval("MenuName") %>'>
                                         </asp:LinkButton>
                                     </li>
@@ -100,15 +82,10 @@
                             </nav>
                         </ItemTemplate>
                     </asp:Repeater>
-
-                    <!-- /.sidebar-menu -->
                 </div>
-                <!-- /.sidebar -->
             </aside>
 
-            <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
@@ -131,13 +108,9 @@
                     </div>
                 </section>
             </div>
-            <!-- /.content-wrapper -->
 
-            <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
             </aside>
-            <!-- /.control-sidebar -->
 
 
             <footer class="main-footer">
@@ -151,20 +124,31 @@
             </footer>
         </div>
 
-        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap/js/bootstrap.bundle.min.js") %>'></script>
-        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/chart.js/Chart.min.js") %>'></script>
+        <!-- REQUIRED SCRIPTS -->
         <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/jquery/jquery.min.js") %>'></script>
+        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap/js/bootstrap.bundle.min.js") %>'></script>
+        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") %>'></script>
+        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/adminlte.js") %>'></script>
         <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/jquery-mousewheel/jquery.mousewheel.js") %>'></script>
+        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/raphael/raphael.min.js") %>'></script>
         <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/jquery-mapael/jquery.mapael.min.js") %>'></script>
         <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/jquery-mapael/maps/usa_states.min.js") %>'></script>
-        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") %>'></script>
-        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/raphael/raphael.min.js") %>'></script>
-
-        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/adminlte.js") %>'></script>
+        <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/chart.js/Chart.min.js") %>'></script>
+        <%--<script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/demo.js") %>'></script>--%>
         <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/pages/dashboard2.js") %>'></script>
 
-        <asp:ContentPlaceHolder ID="cphScript" runat="server"></asp:ContentPlaceHolder>
+        <script type="text/javascript" language="javascript">
+            function numeric(e) {
+                var unicode = e.charCode ? e.charCode : e.keyCode;
+                if (unicode == 8 || unicode == 9 || (unicode >= 48 && unicode <= 57)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        </script>
+          <asp:ContentPlaceHolder ID="cphScript" runat="server"></asp:ContentPlaceHolder>
     </form>
 </body>
 </html>
-

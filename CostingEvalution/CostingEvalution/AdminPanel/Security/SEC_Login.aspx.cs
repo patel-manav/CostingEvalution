@@ -85,6 +85,7 @@ namespace CostingEvalution.AdminPanel.Security
 
 
                     Response.Redirect(Page.ResolveClientUrl("../Master/MST_Unit.aspx"));
+                    //Response.Redirect(Page.ResolveClientUrl("../Dashboard.aspx"));
                     lblUserName.Visible = false;
                     lblUserPassword.Visible = false;
                 }
