@@ -20,7 +20,10 @@
         <div class="col-md-3 form-group">
             Question*
             <asp:Label runat="server" ID="lblQuestion" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
-            <asp:DropDownList runat="server" ID="ddlQuestion" CssClass="form-control" AutoPostBack="true" SelectionMode="Multiple"></asp:DropDownList>
+            <%--<asp:DropDownList runat="server" ID="ddlQuestion" CssClass="form-control" AutoPostBack="true" SelectionMode="Multiple"></asp:DropDownList>--%>
+            <%--<asp:CheckBoxList runat="server" ID="ddlQuestion" CssClass="form-control" AutoPostBack="true" ></asp:CheckBoxList>--%>
+            <asp:ListBox ID="ddlQuestion" runat="server" SelectionMode="Multiple" CssClass="form-control" sty></asp:ListBox>
+
         </div>
 
 

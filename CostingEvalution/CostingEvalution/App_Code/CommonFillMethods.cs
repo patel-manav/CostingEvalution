@@ -58,7 +58,7 @@ namespace CostingEvalution.App_Code
         #endregion ItemType DropDown
 
         #region Question DropDown
-        public static void FillDropDownListQuestion(DropDownList ddl)
+        public static void FillDropDownListQuestion(ListBox ddl)
         {
             PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
             DataTable dt = balPRD_Question.SelectForDropDown();
@@ -72,5 +72,22 @@ namespace CostingEvalution.App_Code
             }
         }
         #endregion Question DropDown
+
+        #region MainModel DropDown
+        public static void FillDropDownListMainModel(DropDownList ddl)
+        {
+            PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
+            DataTable dt = balPRD_MainModel.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "MainModelID";
+                ddl.DataTextField = "MainModelName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select MainModel", "-1"));
+            }
+        }
+        #endregion MainModel DropDown
+
     }
 }

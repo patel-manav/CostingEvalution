@@ -18,7 +18,7 @@
             <!-- /.login-logo -->
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <p class="h1"><b>Costing </b>Evaluation</p>
+                    <p class="h2"><b>Costing </b>Evaluation</p>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">SIGN IN TO START YOUR SESSION</p>
@@ -50,7 +50,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <asp:Button runat="server" ID="btnSignIn" CssClass="btn btn-primary btn-block" Text="Sign In" OnClick="btnSignIn_Click" CausesValidation="false"/>
+                            <asp:Button runat="server" ID="btnSignIn" CssClass="btn btn-primary btn-block" Text="Sign In" OnClick="btnSignIn_Click" CausesValidation="false" />
                         </div>
                     </div>
                 </div>

@@ -7,57 +7,84 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CostingEvalution.AdminPanel.Product
+namespace CostingEvalution.AdminPanel.Item
 {
 
 
-    public partial class PRD_MainModel
+    public partial class ITM_Item
     {
 
         /// <summary>
-        /// hfMainModelID control.
+        /// hfItemID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfMainModelID;
+        protected global::System.Web.UI.WebControls.HiddenField hfItemID;
 
         /// <summary>
-        /// lblMainModelName control.
+        /// lblItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMainModelName;
+        protected global::System.Web.UI.WebControls.Label lblItemName;
 
         /// <summary>
-        /// txtMainModelName control.
+        /// txtItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMainModelName;
+        protected global::System.Web.UI.WebControls.TextBox txtItemName;
 
         /// <summary>
-        /// lblQuestion control.
+        /// lblItemType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQuestion;
+        protected global::System.Web.UI.WebControls.Label lblItemType;
 
         /// <summary>
-        /// ddlQuestion control.
+        /// ddlItemType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlQuestion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlItemType;
+
+        /// <summary>
+        /// lblMainModel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMainModel;
+
+        /// <summary>
+        /// ddlMainModel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMainModel;
+
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
         /// btnSave control.

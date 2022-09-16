@@ -81,7 +81,7 @@ namespace CostingEvalution.Content
         #region ChangePassword
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../User/ChangePassword.aspx");
+            Response.Redirect(Page.ResolveClientUrl("../Security/SEC_ChangePassword.aspx"));
         }
         #endregion ChangePassword
     }
