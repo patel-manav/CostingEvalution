@@ -13,6 +13,9 @@ namespace CostingEvalution.Content
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Session["UserID"] = "1";
+            //Session["UserName"] = "admin";
+            //Session["UserDisplayName"] = "admin";
             try
             {
                 #region CheckSession

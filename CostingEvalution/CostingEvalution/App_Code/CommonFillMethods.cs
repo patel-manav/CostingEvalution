@@ -68,7 +68,7 @@ namespace CostingEvalution.App_Code
                 ddl.DataTextField = "QuestionName";
                 ddl.DataSource = dt;
                 ddl.DataBind();
-                ddl.Items.Insert(0, new ListItem("Select Question", "-1"));
+                //ddl.Items.Insert(0, new ListItem("Select Question", "-1"));
             }
         }
         #endregion Question DropDown

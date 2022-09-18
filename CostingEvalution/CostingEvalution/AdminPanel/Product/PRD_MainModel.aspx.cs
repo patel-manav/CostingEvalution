@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CostingEvalution.App_Code.DAL;
 
 namespace CostingEvalution.AdminPanel.Product
 {
@@ -31,7 +32,9 @@ namespace CostingEvalution.AdminPanel.Product
         private void FillDropDownList()
         {
             CommonFillMethods.FillDropDownListQuestion(ddlQuestion);
+            ddlQuestion.Items[0].Selected = true;
         }
+
         #endregion FillDropDownList
 
         //#region Fill GridView
@@ -55,89 +58,96 @@ namespace CostingEvalution.AdminPanel.Product
 
         //#endregion Fill GridView
 
-        //#region Save Click
-        //[Obsolete]
-        //protected void btnSave_Click(object sender, EventArgs e)
-        //{
-        //    #region Variable
-        //    PRD_QuestionENT entPRD_Question = new PRD_QuestionENT();
-        //    PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
-        //    #endregion Variable
+        #region Save Click
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedIndex in ddlQuestion.GetSelectedIndices())
+            {
+                Console.WriteLine(ddlQuestion.Items[selectedIndex].Value);
+            }
 
-        //    #region Validation
-        //    if (txtQuestionName.Text.Trim() == "")
-        //    {
-        //        ClearValidation();
-        //        lblQuestionName.Visible = true;
-        //        return;
-        //    }
-        //    else if (ddlItemType.SelectedIndex == 0)
-        //    {
-        //        ClearValidation();
-        //        lblItemType.Visible = true;
-        //        return;
-        //    }
-        //    #endregion Validation
+            #region Variable
+            PRD_MainModelENT entPRD_MainModel = new PRD_MainModelENT();
+            PRD_MainModelBAL dalPRD_MainModel = new PRD_MainModelBAL();
 
-        //    #region Gather Data
-        //    if (hfQuestionID.Value != "")
-        //    {
-        //        entPRD_Question.QuestionID = Convert.ToInt32(hfQuestionID.Value.Trim());
-        //    }
+            PRD_QuestionENT entPRD_Question = new PRD_QuestionENT();
+            PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
+            #endregion Variable
 
-        //    if (txtQuestionName.Text.Trim() != "")
-        //    {
-        //        entPRD_Question.QuestionName = txtQuestionName.Text.Trim();
-        //    }
+            #region Validation
+            if (ddlQuestion.Text.Trim() == "")
+            {
+                ClearValidation();
+                lblQuestionName.Visible = true;
+                return;
+            }
+            else if (ddlItemType.SelectedIndex == 0)
+            {
+                ClearValidation();
+                lblItemType.Visible = true;
+                return;
+            }
+            #endregion Validation
 
-        //    if (ddlItemType.SelectedIndex != 0)
-        //    {
-        //        entPRD_Question.ItemTypeID = Convert.ToInt32(ddlItemType.SelectedValue.ToString());
-        //    }
+            #region Gather Data
+            if (hfQuestionID.Value != "")
+            {
+                entPRD_Question.QuestionID = Convert.ToInt32(hfQuestionID.Value.Trim());
+            }
 
-        //    if (txtQuestionDescription.Text.Trim() != "")
-        //    {
-        //        entPRD_Question.Description = txtQuestionDescription.Text.Trim();
-        //    }
+            if (txtQuestionName.Text.Trim() != "")
+            {
+                entPRD_Question.QuestionName = txtQuestionName.Text.Trim();
+            }
 
-        //    entPRD_Question.CreateDateTime = DateTime.Now;
-        //    entPRD_Question.CreateBy = Convert.ToInt32(Session["UserID"]);
-        //    entPRD_Question.CreateIP = Session["IP"].ToString();
-        //    entPRD_Question.UpdateDateTime = DateTime.Now;
-        //    entPRD_Question.UpdateBy = Convert.ToInt32(Session["UserID"]);
-        //    entPRD_Question.UpdateIP = Session["IP"].ToString();
+            if (ddlItemType.SelectedIndex != 0)
+            {
+                entPRD_Question.ItemTypeID = Convert.ToInt32(ddlItemType.SelectedValue.ToString());
+            }
 
-        //    #endregion Gather Data
+            if (txtQuestionDescription.Text.Trim() != "")
+            {
+                entPRD_Question.Description = txtQuestionDescription.Text.Trim();
+            }
 
-        //    #region Insert/Update
-        //    if (hfQuestionID.Value != "")
-        //    {
-        //        if (balPRD_Question.Update(entPRD_Question))
-        //        {
-        //            ClearControl();
-        //            ClearValidation();
-        //        }
-        //        else
-        //        {
+            entPRD_Question.CreateDateTime = DateTime.Now;
+            entPRD_Question.CreateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_Question.CreateIP = Session["IP"].ToString();
+            entPRD_Question.UpdateDateTime = DateTime.Now;
+            entPRD_Question.UpdateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_Question.UpdateIP = Session["IP"].ToString();
 
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (balPRD_Question.Insert(entPRD_Question))
-        //        {
-        //            ClearControl();
-        //            ClearValidation();
-        //        }
-        //        else
-        //        {
+            #endregion Gather Data
 
-        //        }
-        //    }
-        //    #endregion Insert/Update
+            #region Insert/Update
+            if (hfQuestionID.Value != "")
+            {
+                if (balPRD_Question.Update(entPRD_Question))
+                {
+                    ClearControl();
+                    ClearValidation();
+                }
+                else
+                {
 
-        //}
-        //#endregion Save Click
+                }
+            }
+            else
+            {
+                if (balPRD_Question.Insert(entPRD_Question))
+                {
+                    ClearControl();
+                    ClearValidation();
+                }
+                else
+                {
+
+                }
+            }
+            #endregion Insert/Update
+
+        }
+        #endregion Save Click
 
         //#region Clear Control
         //protected void btnClear_Click(object sender, EventArgs e)

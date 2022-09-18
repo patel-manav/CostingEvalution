@@ -2091,6 +2091,7 @@
     <Compile Include="App_Code\BAL\MST_RawMaterialBAL.cs" />
     <Compile Include="App_Code\BAL\MST_UnitBAL.cs" />
     <Compile Include="App_Code\BAL\PRD_MainModelBAL.cs" />
+    <Compile Include="App_Code\BAL\PRD_MainModelWiseQuestionBAL.cs" />
     <Compile Include="App_Code\BAL\PRD_QuestionBAL.cs" />
     <Compile Include="App_Code\BAL\SEC_MenuBAL.cs" />
     <Compile Include="App_Code\BAL\SEC_UserWiseMenuBAL.cs" />
@@ -2101,6 +2102,7 @@
     <Compile Include="App_Code\DAL\MST_RawMaterialDAL.cs" />
     <Compile Include="App_Code\DAL\MST_UnitDAL.cs" />
     <Compile Include="App_Code\DAL\PRD_MainModelDAL.cs" />
+    <Compile Include="App_Code\DAL\PRD_MainModelWiseQuestionDAL.cs" />
     <Compile Include="App_Code\DAL\PRD_QuestionDAL.cs" />
     <Compile Include="App_Code\DAL\SEC_MenuDAL.cs" />
     <Compile Include="App_Code\DAL\SEC_UserWiseMenuDAL.cs" />
@@ -2127,6 +2129,7 @@
     <Compile Include="App_Code\ENT\MST_RawMaterialENT.cs" />
     <Compile Include="App_Code\ENT\MST_UnitENT.cs" />
     <Compile Include="App_Code\ENT\PRD_MainModelENT.cs" />
+    <Compile Include="App_Code\ENT\PRD_MainModelWiseQuestionENT.cs" />
     <Compile Include="App_Code\ENT\PRD_QuestionENT.cs" />
     <Compile Include="App_Code\ENT\SEC_MenuENT.cs" />
     <Compile Include="App_Code\ENT\SEC_UserENT.cs" />
