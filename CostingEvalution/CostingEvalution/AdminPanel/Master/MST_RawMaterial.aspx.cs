@@ -56,7 +56,6 @@ namespace CostingEvalution.AdminPanel.Master
         #endregion Fill GridView
 
         #region Save Click
-        [Obsolete]
         protected void btnSave_Click(object sender, EventArgs e)
         {
             #region Variable

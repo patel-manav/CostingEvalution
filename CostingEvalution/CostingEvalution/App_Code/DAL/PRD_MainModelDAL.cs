@@ -60,7 +60,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModel_Insert";
+                        objCmd.CommandText = "SP_PRD_MainModel_Insert";
                         
                         objCmd.Parameters.Add("@MainModelID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
                         objCmd.Parameters.AddWithValue("@MainModelName", entPRD_MainModel.MainModelName);
@@ -115,7 +115,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModel_Update";
+                        objCmd.CommandText = "SP_PRD_MainModel_Update";
 
                         objCmd.Parameters.AddWithValue("@MainModelID", entPRD_MainModel.MainModelID);
                         objCmd.Parameters.AddWithValue("@MainModelName", entPRD_MainModel.MainModelName);
@@ -170,7 +170,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModel_Delete";
+                        objCmd.CommandText = "SP_PRD_MainModel_Delete";
                         
                         objCmd.Parameters.AddWithValue("@MainModelID", MainModelID);            
                         #endregion Prepare Command
@@ -204,7 +204,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select(SqlString MainModelName)
+        public DataTable Select()
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -217,9 +217,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModel_Select";
+                        objCmd.CommandText = "SP_PRD_MainModel_Select";
 
-                        objCmd.Parameters.AddWithValue("@MainModelName", MainModelName);
+                        //objCmd.Parameters.AddWithValue("@MainModelName", MainModelName);
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
@@ -275,7 +275,7 @@ namespace CostingEvalution.App_Code.DAL
 
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModel_SelectPK";
+                        objCmd.CommandText = "SP_PRD_MainModel_SelectPK";
                         objCmd.Parameters.AddWithValue("@MainModelID", MainModelID);
                         #endregion Prepare Command
 
@@ -373,7 +373,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModel_SelectForDropDown";
+                        objCmd.CommandText = "SP_PRD_MainModel_SelectForDropDown";
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls

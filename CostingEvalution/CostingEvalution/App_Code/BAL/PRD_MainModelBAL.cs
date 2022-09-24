@@ -94,10 +94,10 @@ namespace CostingEvalution.App_Code.BAL
         #region Select Operation
 
         #region Select
-        public DataTable Select(SqlString MainModelName)
+        public DataTable Select()
         {
             PRD_MainModelDAL dalPRD_MainModel = new PRD_MainModelDAL();
-            return dalPRD_MainModel.Select(MainModelName);
+            return dalPRD_MainModel.Select();
         }
         #endregion Select
 

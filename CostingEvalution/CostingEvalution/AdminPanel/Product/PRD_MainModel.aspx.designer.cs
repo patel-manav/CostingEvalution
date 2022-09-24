@@ -51,13 +51,13 @@ namespace CostingEvalution.AdminPanel.Product
         protected global::System.Web.UI.WebControls.Label lblQuestion;
 
         /// <summary>
-        /// ddlQuestion control.
+        /// lbQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlQuestion;
+        protected global::System.Web.UI.WebControls.ListBox lbQuestion;
 
         /// <summary>
         /// btnSave control.
@@ -76,5 +76,14 @@ namespace CostingEvalution.AdminPanel.Product
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
+        /// gvMainModel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvMainModel;
     }
 }

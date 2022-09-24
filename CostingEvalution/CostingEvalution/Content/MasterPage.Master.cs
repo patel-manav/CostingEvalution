@@ -77,6 +77,8 @@ namespace CostingEvalution.Content
         {
             Session.RemoveAll();
             Session.Clear();
+            Session.Abandon();
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Redirect(Page.ResolveClientUrl("../Security/SEC_Login.aspx"));
         }
         #endregion Logout

@@ -24,124 +24,126 @@ namespace CostingEvalution.AdminPanel.Product
             if (!Page.IsPostBack)
             {
                 FillDropDownList();
-                //FillGridView();
+                FillGridView();
             }
         }
 
         #region FillDropDownList
         private void FillDropDownList()
         {
-            CommonFillMethods.FillDropDownListQuestion(ddlQuestion);
-            ddlQuestion.Items[0].Selected = true;
+            CommonFillMethods.FillDropDownListQuestion(lbQuestion);
+            //ddlQuestion.Items[0].Selected = true;p
         }
 
         #endregion FillDropDownList
 
-        //#region Fill GridView
-        //private void FillGridView()
-        //{
-        //    #region Variable
-        //    PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
-        //    #endregion Variable
+        #region Fill GridView
+        private void FillGridView()
+        {
+            #region Variable
+            PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
+            #endregion Variable
 
-        //    #region Bind Data
-        //    DataTable dt = balPRD_Question.Select();
+            #region Bind Data
+            DataTable dt = balPRD_MainModel.Select();
 
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        gvQuestion.DataSource = dt;
-        //        gvQuestion.DataBind();
-        //    }
-        //    #endregion Bind Data
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                gvMainModel.DataSource = dt;
+                gvMainModel.DataBind();
+            }
+            #endregion Bind Data
 
-        //}
+        }
 
-        //#endregion Fill GridView
+        #endregion Fill GridView
 
         #region Save Click
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            foreach (int selectedIndex in ddlQuestion.GetSelectedIndices())
-            {
-                Console.WriteLine(ddlQuestion.Items[selectedIndex].Value);
-            }
-
             #region Variable
             PRD_MainModelENT entPRD_MainModel = new PRD_MainModelENT();
-            PRD_MainModelBAL dalPRD_MainModel = new PRD_MainModelBAL();
+            PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
 
-            PRD_QuestionENT entPRD_Question = new PRD_QuestionENT();
-            PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
+            PRD_MainModelWiseQuestionENT entPRD_MainModelWiseQuestion = new PRD_MainModelWiseQuestionENT();
+            PRD_MainModelWiseQuestionBAL balPRD_MainModelWiseQuestion = new PRD_MainModelWiseQuestionBAL();
             #endregion Variable
 
             #region Validation
-            if (ddlQuestion.Text.Trim() == "")
+            if (txtMainModelName.Text.Trim() == "")
             {
                 ClearValidation();
-                lblQuestionName.Visible = true;
+                lblMainModelName.Visible = true;
                 return;
             }
-            else if (ddlItemType.SelectedIndex == 0)
+            else if (lbQuestion.Items.Count == 0)
             {
                 ClearValidation();
-                lblItemType.Visible = true;
+                lblQuestion.Visible = true;
                 return;
             }
             #endregion Validation
 
             #region Gather Data
-            if (hfQuestionID.Value != "")
+            if (hfMainModelID.Value != "")
             {
-                entPRD_Question.QuestionID = Convert.ToInt32(hfQuestionID.Value.Trim());
+                entPRD_MainModel.MainModelID = Convert.ToInt32(hfMainModelID.Value.Trim());
             }
-
-            if (txtQuestionName.Text.Trim() != "")
+            
+            if (txtMainModelName.Text.Trim() != "")
             {
-                entPRD_Question.QuestionName = txtQuestionName.Text.Trim();
+                entPRD_MainModel.MainModelName = txtMainModelName.Text.Trim();
             }
+      
+            entPRD_MainModel.CreateDateTime = DateTime.Now;
+            entPRD_MainModel.CreateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_MainModel.CreateIP = Session["IP"].ToString();
+            entPRD_MainModel.UpdateDateTime = DateTime.Now;
+            entPRD_MainModel.UpdateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_MainModel.UpdateIP = Session["IP"].ToString();
 
-            if (ddlItemType.SelectedIndex != 0)
-            {
-                entPRD_Question.ItemTypeID = Convert.ToInt32(ddlItemType.SelectedValue.ToString());
-            }
-
-            if (txtQuestionDescription.Text.Trim() != "")
-            {
-                entPRD_Question.Description = txtQuestionDescription.Text.Trim();
-            }
-
-            entPRD_Question.CreateDateTime = DateTime.Now;
-            entPRD_Question.CreateBy = Convert.ToInt32(Session["UserID"]);
-            entPRD_Question.CreateIP = Session["IP"].ToString();
-            entPRD_Question.UpdateDateTime = DateTime.Now;
-            entPRD_Question.UpdateBy = Convert.ToInt32(Session["UserID"]);
-            entPRD_Question.UpdateIP = Session["IP"].ToString();
+            entPRD_MainModelWiseQuestion.CreateDateTime = DateTime.Now;
+            entPRD_MainModelWiseQuestion.CreateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_MainModelWiseQuestion.CreateIP = Session["IP"].ToString();
+            entPRD_MainModelWiseQuestion.UpdateDateTime = DateTime.Now;
+            entPRD_MainModelWiseQuestion.UpdateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_MainModelWiseQuestion.UpdateIP = Session["IP"].ToString();
 
             #endregion Gather Data
 
             #region Insert/Update
-            if (hfQuestionID.Value != "")
+            if (hfMainModelID.Value != "")
             {
-                if (balPRD_Question.Update(entPRD_Question))
+                if (balPRD_MainModel.Update(entPRD_MainModel))
                 {
                     ClearControl();
                     ClearValidation();
                 }
                 else
                 {
-
+            
                 }
             }
             else
             {
-                if (balPRD_Question.Insert(entPRD_Question))
+                if (balPRD_MainModel.Insert(entPRD_MainModel))
                 {
+                    #region SelectMultipleQuestion
+                    foreach (int selectedIndex in lbQuestion.GetSelectedIndices())
+                    {
+                        //Console.WriteLine(ddlQuestion.Items[selectedIndex].Value);
+                        entPRD_MainModelWiseQuestion.MainModelID = entPRD_MainModel.MainModelID;
+                        entPRD_MainModelWiseQuestion.QuestionID = Convert.ToInt32(lbQuestion.Items[selectedIndex].Value);
+
+                        balPRD_MainModelWiseQuestion.Insert(entPRD_MainModelWiseQuestion);
+                    }
+                    #endregion SelectMultipleQuestion
                     ClearControl();
                     ClearValidation();
                 }
                 else
                 {
-
+            
                 }
             }
             #endregion Insert/Update
@@ -149,104 +151,103 @@ namespace CostingEvalution.AdminPanel.Product
         }
         #endregion Save Click
 
-        //#region Clear Control
-        //protected void btnClear_Click(object sender, EventArgs e)
-        //{
-        //    ClearControl();
-        //    ClearValidation();
-        //}
+        #region Clear Control
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearControl();
+            ClearValidation();
+        }
 
-        //#region Clear Control
-        //private void ClearControl()
-        //{
-        //    FillGridView();
-        //    hfQuestionID.Value = null;
-        //    txtQuestionName.Text = "";
-        //    ddlItemType.SelectedIndex = 0;
-        //    txtQuestionDescription.Text = "";
-        //}
-        //#endregion Clear Control
+        #region Clear Control
+        private void ClearControl()
+        {
+            FillGridView();
+            hfMainModelID.Value = null;
+            txtMainModelName.Text = "";
+            lbQuestion.Items.Remove(lbQuestion.SelectedItem);
+        }
+        #endregion Clear Control
 
-        //#region Clear Validation
-        //private void ClearValidation()
-        //{
-        //    lblQuestionName.Visible = false;
-        //    lblItemType.Visible = false;
-        //}
-        //#endregion Clear Validation
+        #region Clear Validation
+        private void ClearValidation()
+        {
+            lblMainModelName.Visible = false;
+            lblQuestion.Visible = false;
+        }
+        #endregion Clear Validation
 
-        //#endregion Clear Control
+        #endregion Clear Control
 
-        //#region Delete/Update
-        //protected void gvQuestion_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    #region Variable
-        //    PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
-        //    #endregion Variable
+        #region Delete/Update
+        protected void gvMainModel_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            #region Variable
+            PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
+            #endregion Variable
 
-        //    #region Clear Validation
-        //    ClearValidation();
-        //    #endregion Clear Validation
+            #region Clear Validation
+            ClearValidation();
+            #endregion Clear Validation
 
-        //    #region Delete Record
-        //    if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
-        //    {
-        //        if (balPRD_Question.Delete(Convert.ToInt32(e.CommandArgument)))
-        //        {
-        //            ClearControl();
-        //        }
-        //        else
-        //        {
+            #region Delete Record
+            if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
+            {
+                if (balPRD_MainModel.Delete(Convert.ToInt32(e.CommandArgument)))
+                {
+                    ClearControl();
+                }
+                else
+                {
 
-        //        }
-        //    }
-        //    #endregion Delete Record
+                }
+            }
+            #endregion Delete Record
 
-        //    #region Call FillDataByPK
-        //    else if (e.CommandName == "EditRecord" && e.CommandArgument != null)
-        //    {
-        //        FillDataByPK(Convert.ToInt32(e.CommandArgument));
-        //    }
-        //    #endregion Call FillDataByPK
-        //}
-        //#endregion Delete/Update
+            #region Call FillDataByPK
+            else if (e.CommandName == "EditRecord" && e.CommandArgument != null)
+            {
+                FillDataByPK(Convert.ToInt32(e.CommandArgument));
+            }
+            #endregion Call FillDataByPK
+        }
+        #endregion Delete/Update
 
-        //#region FillDataByPK
-        //private void FillDataByPK(SqlInt32 EmployeeDesignationID)
-        //{
-        //    #region Variable
-        //    PRD_QuestionBAL balPRD_Question = new PRD_QuestionBAL();
-        //    PRD_QuestionENT entPRD_Question = balPRD_Question.SelectPK(EmployeeDesignationID);
-        //    #endregion Variable
+        #region FillDataByPK
+        private void FillDataByPK(SqlInt32 MainModelID)
+        {
+            #region Variable
+            PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
+            PRD_MainModelENT entPRD_MainModel = balPRD_MainModel.SelectPK(MainModelID);
+            #endregion Variable
 
-        //    #region Fill Data
-        //    if (!entPRD_Question.QuestionID.IsNull)
-        //    {
-        //        hfQuestionID.Value = entPRD_Question.QuestionID.Value.ToString();
-        //    }
-        //    if (!entPRD_Question.QuestionName.IsNull)
-        //    {
-        //        txtQuestionName.Text = entPRD_Question.QuestionName.Value;
-        //    }
-        //    if (!entPRD_Question.ItemTypeID.IsNull)
-        //    {
-        //        ddlItemType.SelectedValue = entPRD_Question.ItemTypeID.Value.ToString();
-        //    }
-        //    if (!entPRD_Question.Description.IsNull)
-        //    {
-        //        txtQuestionDescription.Text = entPRD_Question.Description.Value.ToString();
-        //    }
-        //    #endregion Fill Data
-        //}
-        //#endregion FillDataByPK
+            #region Fill Data
+            if (!entPRD_MainModel.MainModelID.IsNull)
+            {
+                hfMainModelID.Value = entPRD_MainModel.MainModelID.Value.ToString();
+            }
+            if (!entPRD_MainModel.MainModelName.IsNull)
+            {
+                txtMainModelName.Text = entPRD_MainModel.MainModelName.Value;
+            }
+            //if (!entPRD_Question.ItemTypeID.IsNull)
+            //{
+            //    ddlItemType.SelectedValue = entPRD_Question.ItemTypeID.Value.ToString();
+            //}
+            //if (!entPRD_Question.Description.IsNull)
+            //{
+            //    txtQuestionDescription.Text = entPRD_Question.Description.Value.ToString();
+            //}
+            #endregion Fill Data
+        }
+        #endregion FillDataByPK
 
-        //#region PageIndex Change
-        //protected void gvQuestion_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    gvQuestion.PageIndex = e.NewPageIndex;
-        //    FillGridView();
-        //    gvQuestion.DataBind();
-        //}
-        //#endregion PageIndex Change 
+        #region PageIndex Change
+        protected void gvMainModel_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvMainModel.PageIndex = e.NewPageIndex;
+            FillGridView();
+            gvMainModel.DataBind();
+        }
+        #endregion PageIndex Change 
     }
 }

@@ -93,10 +93,10 @@ namespace CostingEvalution.App_Code.BAL
         #region Select Operation
 
         #region Select
-        public DataTable Select(SqlString UserName, SqlString UserDisplayName)
+        public DataTable Select()
         {
             SEC_UserDAL dalSEC_User = new SEC_UserDAL();
-            return dalSEC_User.Select(UserName, UserDisplayName);
+            return dalSEC_User.Select();
         }
         #endregion Select
 

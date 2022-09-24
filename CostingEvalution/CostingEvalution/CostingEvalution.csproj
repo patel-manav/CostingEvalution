@@ -75,6 +75,7 @@
     <Content Include="AdminPanel\Security\SEC_Login.aspx" />
     <Content Include="AdminPanel\Security\SEC_Menu.aspx" />
     <Content Include="AdminPanel\Security\SEC_MenuPermission.aspx" />
+    <Content Include="AdminPanel\Security\SEC_User.aspx" />
     <Content Include="Content\AdminPanel\assets\build\config\postcss.config.js" />
     <Content Include="Content\AdminPanel\assets\build\config\rollup.config.js" />
     <Content Include="Content\AdminPanel\assets\build\js\AdminLTE.js" />
@@ -120,6 +121,7 @@
     <Content Include="Content\AdminPanel\assets\dist\img\avatar5.png" />
     <Content Include="Content\AdminPanel\assets\dist\img\boxed-bg.jpg" />
     <Content Include="Content\AdminPanel\assets\dist\img\boxed-bg.png" />
+    <Content Include="Content\AdminPanel\assets\dist\img\a.png" />
     <Content Include="Content\AdminPanel\assets\dist\img\credit\american-express.png" />
     <Content Include="Content\AdminPanel\assets\dist\img\credit\cirrus.png" />
     <Content Include="Content\AdminPanel\assets\dist\img\credit\mastercard.png" />
@@ -2084,6 +2086,13 @@
     </Compile>
     <Compile Include="AdminPanel\Security\SEC_MenuPermission.aspx.designer.cs">
       <DependentUpon>SEC_MenuPermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Security\SEC_User.aspx.cs">
+      <DependentUpon>SEC_User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Security\SEC_User.aspx.designer.cs">
+      <DependentUpon>SEC_User.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BAL\ITM_ItemBAL.cs" />
     <Compile Include="App_Code\BAL\ITM_ItemTypeBAL.cs" />

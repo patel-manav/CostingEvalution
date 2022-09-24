@@ -59,7 +59,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModelWiseQuestion_Insert";
+                        objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_Insert";
                         
                         objCmd.Parameters.Add("@MainModelWiseQuestionID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
                         objCmd.Parameters.AddWithValue("@MainModelID", entPRD_MainModelWiseQuestion.MainModelID);
@@ -114,7 +114,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModelWiseQuestion_Update";
+                        objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_Update";
 
                         objCmd.Parameters.AddWithValue("@MainModelWiseQuestionID", entPRD_MainModelWiseQuestion.MainModelWiseQuestionID);
                         objCmd.Parameters.AddWithValue("@MainModelID", entPRD_MainModelWiseQuestion.MainModelID);
@@ -169,7 +169,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModelWiseQuestion_Delete";
+                        objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_Delete";
                         
                         objCmd.Parameters.AddWithValue("@MainModelWiseQuestionID", MainModelWiseQuestionID);            
                         #endregion Prepare Command
@@ -216,7 +216,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModelWiseQuestion_Select";
+                        objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_Select";
 
                         
                         #endregion Prepare Command
@@ -274,7 +274,7 @@ namespace CostingEvalution.App_Code.DAL
 
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModelWiseQuestion_SelectPK";
+                        objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_SelectPK";
                         objCmd.Parameters.AddWithValue("@MainModelWiseQuestionID", MainModelWiseQuestionID);
                         #endregion Prepare Command
 
@@ -372,7 +372,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_PRD_MainModelWiseQuestion_SelectForDropDown";
+                        objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_SelectForDropDown";
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls

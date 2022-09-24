@@ -43,13 +43,12 @@
         <div class="col-md-3 form-group">
             Question*
             <asp:Label runat="server" ID="lblQuestion" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
-            <asp:ListBox ID="ddlQuestion" 
-                runat="server" 
-                CssClass="select2bs4" 
+            <asp:ListBox ID="lbQuestion"
+                runat="server"
+                CssClass="select2bs4"
                 SelectionMode="Multiple"
-                Style="width: 100%;" 
-                data-placeholder="Select a Question">
-            </asp:ListBox>
+                Style="width: 100%;"
+                data-placeholder="Select a Question"></asp:ListBox>
             <%--<asp:DropDownList ID="ddlQuestion" 
                 runat="server" 
                 CssClass="select2bs4" 
@@ -71,25 +70,25 @@
         </div>
     </div>
 
-    <%--<div class="row mt-5">
+    <div class="row mt-5">
         <div class="col-md-12 table-responsive">
-            <asp:GridView ID="gvQuestion" runat="server" ClientIDMode="Static" CssClass="table table-hover" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnPageIndexChanging="gvQuestion_PageIndexChanging" OnRowCommand="gvQuestion_RowCommand">
+            <asp:GridView ID="gvMainModel" runat="server" ClientIDMode="Static" CssClass="table table-hover" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnPageIndexChanging="gvMainModel_PageIndexChanging" OnRowCommand="gvMainModel_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="QuestionName" HeaderText="Raw-Material Name" />
-                    <asp:BoundField DataField="ItemTypeName" HeaderText="ItemType" />
-                    <asp:BoundField DataField="Description" HeaderText="Description" />
+                    <asp:BoundField DataField="MainModelName" HeaderText="Main Model" />
+                    <asp:BoundField DataField="QuestionName" HeaderText="Question" />
+
 
                     <asp:TemplateField ItemStyle-CssClass="text-center">
-                        <ItemTemplate>--%>
-    <%--<asp:LinkButton ID="btnDelete" CommandName="DeleteRecord" CommandArgument='<%# Eval("EmployeeDesignationID") %>' CssClass="fa fa-trash-alt mr-2 text-danger" runat="server"></asp:LinkButton>--%>
-    <%--<asp:LinkButton ID="btnEdit" CommandName="EditRecord" CommandArgument='<%# Eval("QuestionID") %>' CssClass="fas fa-edit text-warning" runat="server"></asp:LinkButton>--%>
-    <%-- </ItemTemplate>
+                        <ItemTemplate>
+                            <%--<asp:LinkButton ID="btnDelete" CommandName="DeleteRecord" CommandArgument='<%# Eval("EmployeeDesignationID") %>' CssClass="fa fa-trash-alt mr-2 text-danger" runat="server"></asp:LinkButton>--%>
+                            <asp:LinkButton ID="btnEdit" CommandName="EditRecord" CommandArgument='<%# Eval("MainModelID") %>' CssClass="fas fa-edit text-warning" runat="server"></asp:LinkButton>
+                        </ItemTemplate>
 
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>
-    </div>--%>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="cphScript" runat="server">
@@ -118,7 +117,7 @@
     <!-- AdminLTE App -->
     <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/adminlte.min.js") %>'></script>
     <!-- AdminLTE for demo purposes -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/demo.js") %>'></script>
+    <%--<script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/demo.js") %>'></script>--%>
     <script>
         $(function () {
             //Initialize Select2 Elements

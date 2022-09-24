@@ -207,7 +207,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select(SqlString UserName, SqlString UserDisplayName)
+        public DataTable Select()
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -222,8 +222,6 @@ namespace CostingEvalution.App_Code.DAL
                         objCmd.CommandType = CommandType.StoredProcedure;
                         objCmd.CommandText = "SP_SEC_User_Select";
 
-                        objCmd.Parameters.AddWithValue("@UserName", UserName);
-                        objCmd.Parameters.AddWithValue("@UserDisplayName", UserDisplayName);
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
