@@ -74,7 +74,7 @@ namespace CostingEvalution.App_Code
         #endregion Question DropDown
 
         #region MainModel DropDown
-        public static void FillDropDownListMainModel(DropDownList ddl)
+        public static void FillDropDownListMainModel(ListBox ddl)
         {
             PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
             DataTable dt = balPRD_MainModel.SelectForDropDown();

@@ -95,19 +95,12 @@ namespace CostingEvalution.AdminPanel.Product
                 entPRD_MainModel.MainModelName = txtMainModelName.Text.Trim();
             }
       
-            entPRD_MainModel.CreateDateTime = DateTime.Now;
-            entPRD_MainModel.CreateBy = Convert.ToInt32(Session["UserID"]);
-            entPRD_MainModel.CreateIP = Session["IP"].ToString();
-            entPRD_MainModel.UpdateDateTime = DateTime.Now;
-            entPRD_MainModel.UpdateBy = Convert.ToInt32(Session["UserID"]);
-            entPRD_MainModel.UpdateIP = Session["IP"].ToString();
-
-            entPRD_MainModelWiseQuestion.CreateDateTime = DateTime.Now;
-            entPRD_MainModelWiseQuestion.CreateBy = Convert.ToInt32(Session["UserID"]);
-            entPRD_MainModelWiseQuestion.CreateIP = Session["IP"].ToString();
-            entPRD_MainModelWiseQuestion.UpdateDateTime = DateTime.Now;
-            entPRD_MainModelWiseQuestion.UpdateBy = Convert.ToInt32(Session["UserID"]);
-            entPRD_MainModelWiseQuestion.UpdateIP = Session["IP"].ToString();
+            entPRD_MainModel.CreateDateTime = entPRD_MainModelWiseQuestion.CreateDateTime = DateTime.Now;
+            entPRD_MainModel.CreateBy = entPRD_MainModelWiseQuestion.CreateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_MainModel.CreateIP = entPRD_MainModelWiseQuestion.CreateIP = Session["IP"].ToString();
+            entPRD_MainModel.UpdateDateTime = entPRD_MainModelWiseQuestion.UpdateDateTime = DateTime.Now;
+            entPRD_MainModel.UpdateBy = entPRD_MainModelWiseQuestion.UpdateBy = Convert.ToInt32(Session["UserID"]);
+            entPRD_MainModel.UpdateIP = entPRD_MainModelWiseQuestion.UpdateIP = Session["IP"].ToString();
 
             #endregion Gather Data
 

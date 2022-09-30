@@ -13,7 +13,6 @@
 
         <div class="col-md-3 form-group">
             Name*
-           
             <asp:Label runat="server" ID="lblItemName" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
             <asp:TextBox runat="server" ID="txtItemName" CssClass="form-control" AutoCompleteType="Disabled" />
         </div>
@@ -21,27 +20,31 @@
 
         <div class="col-md-3 form-group">
             ItemType*
-           
             <asp:Label runat="server" ID="lblItemType" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
             <asp:DropDownList runat="server" ID="ddlItemType" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
         </div>
 
-        <div class="col-md-3 form-group">
-            Main Model*
+         <div class="col-md-3 form-group">
+            MainModel*
             <asp:Label runat="server" ID="lblMainModel" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
-            <asp:DropDownList runat="server" ID="ddlMainModel" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
+            <asp:ListBox ID="lbMainModel"
+                runat="server"
+                CssClass="select2bs4"
+                SelectionMode="Multiple"
+                Style="width: 100%;"
+                data-placeholder="Select a MainModel"></asp:ListBox>
         </div>
 
-        <div class="col-md-1 mt-4">
+      <%--  <div class="col-md-1 mt-4">
             <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary" Style="width: 100%;" Text="Add" />
+        </div>--%>
+
+        <div class="col-md-1 mt-4">
+            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Style="width: 100%;" Text="Save" OnClick="btnSave_Click"/>
         </div>
 
         <div class="col-md-1 mt-4">
-            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Style="width: 100%;" Text="Save" />
-        </div>
-
-        <div class="col-md-1 mt-4">
-            <asp:Button ID="btnClear" runat="server" CssClass="btn btn-secondary" Style="width: 100%;" Text="Clear" />
+            <asp:Button ID="btnClear" runat="server" CssClass="btn btn-secondary" Style="width: 100%;" Text="Clear" OnClick="btnClear_Click"/>
         </div>
     </div>
 

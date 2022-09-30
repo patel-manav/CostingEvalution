@@ -1,29 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterPage.Master" AutoEventWireup="true" CodeBehind="PRD_MainModel.aspx.cs" Inherits="CostingEvalution.AdminPanel.Product.PRD_MainModel" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/fontawesome-free/css/all.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- daterange picker -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/daterangepicker/daterangepicker.css")%>" rel="stylesheet" type="text/css" />
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- Bootstrap Color Picker -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- Select2 -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/select2/css/select2.min.css")%>" rel="stylesheet" type="text/css" />
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- Bootstrap4 Duallistbox -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- BS Stepper -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bs-stepper/css/bs-stepper.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- dropzonejs -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/dropzone/min/dropzone.min.css")%>" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/css/adminlte.min.css")%>" rel="stylesheet" type="text/css" />
+    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PageHeading" runat="server">
@@ -49,15 +27,6 @@
                 SelectionMode="Multiple"
                 Style="width: 100%;"
                 data-placeholder="Select a Question"></asp:ListBox>
-            <%--<asp:DropDownList ID="ddlQuestion" 
-                runat="server" 
-                CssClass="select2bs4" 
-                multiple="multiple" 
-                data-placeholder="Select a Question" 
-                Style="width: 100%;" 
-                OnSelectedIndexChanged="ddlQuestion_SelectedIndexChanged" 
-                AutoPostBack="true">
-            </asp:DropDownList>--%>
         </div>
 
 
@@ -92,32 +61,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="cphScript" runat="server">
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/jquery/jquery.min.js") %>'></script>
-    <!-- Bootstrap 4 -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap/js/bootstrap.bundle.min.js") %>'></script>
-    <!-- Select2 -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/select2/js/select2.full.min.js") %>'></script>
-    <!-- Bootstrap4 Duallistbox -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js") %>'></script>
-    <!-- InputMask -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/moment/moment.min.js") %>'></script>
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/inputmask/jquery.inputmask.min.js") %>'></script>
-    <!-- date-range-picker -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/daterangepicker/daterangepicker.js") %>'></script>
-    <!-- bootstrap color picker -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js") %>'></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js") %>'></script>
-    <!-- Bootstrap Switch -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js") %>'></script>
-    <!-- BS-Stepper -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/bs-stepper/js/bs-stepper.min.js") %>'></script>
-    <!-- dropzonejs -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/plugins/dropzone/min/dropzone.min.js") %>'></script>
-    <!-- AdminLTE App -->
-    <script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/adminlte.min.js") %>'></script>
-    <!-- AdminLTE for demo purposes -->
-    <%--<script src='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/js/demo.js") %>'></script>--%>
+
     <script>
         $(function () {
             //Initialize Select2 Elements

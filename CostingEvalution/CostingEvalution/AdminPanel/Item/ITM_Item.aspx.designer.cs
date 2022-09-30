@@ -69,22 +69,13 @@ namespace CostingEvalution.AdminPanel.Item
         protected global::System.Web.UI.WebControls.Label lblMainModel;
 
         /// <summary>
-        /// ddlMainModel control.
+        /// lbMainModel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMainModel;
-
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.ListBox lbMainModel;
 
         /// <summary>
         /// btnSave control.

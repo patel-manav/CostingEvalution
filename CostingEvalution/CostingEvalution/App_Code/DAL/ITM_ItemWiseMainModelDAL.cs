@@ -1,6 +1,6 @@
 using CostingEvalution;
-using CostingEvalution.App_Code.BAL;
 using CostingEvalution.App_Code.ENT;
+using CostingEvalution.App_Code.BAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,12 +10,12 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for ITM_ItemDAL
+/// Summary description for ITM_ItemWiseMainModelDAL
 /// </summary>
 /// 
 namespace CostingEvalution.App_Code.DAL
 {
-    public class ITM_ItemDAL : DatabaseConfig
+    public class ITM_ItemWiseMainModelDAL : DatabaseConfig
     {
         #region Local variables
 
@@ -36,7 +36,7 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Local variables
 
         #region Constructor
-        public ITM_ItemDAL()
+        public ITM_ItemWiseMainModelDAL()
         {
             //
             // TODO: Add constructor logic here
@@ -46,7 +46,7 @@ namespace CostingEvalution.App_Code.DAL
     
         #region Insert Operation
 
-        public Boolean Insert(ITM_ItemENT entITM_Item)
+        public Boolean Insert(ITM_ItemWiseMainModelENT entITM_ItemWiseMainModel)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -59,21 +59,21 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_ITM_Item_Insert";
+                        objCmd.CommandText = "SP_ITM_ItemWiseMainModel_Insert";
                         
-                        objCmd.Parameters.Add("@ItemID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
-                        objCmd.Parameters.AddWithValue("@ItemName", entITM_Item.ItemName);
-                        objCmd.Parameters.AddWithValue("@ItemTypeID", entITM_Item.ItemTypeID);
-                        objCmd.Parameters.AddWithValue("@CreateDateTime", entITM_Item.CreateDateTime);
-                        objCmd.Parameters.AddWithValue("@CreateBy", entITM_Item.CreateBy);
-                        objCmd.Parameters.AddWithValue("@CreateIP", entITM_Item.CreateIP);
-                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entITM_Item.UpdateDateTime);
-                        objCmd.Parameters.AddWithValue("@UpdateBy", entITM_Item.UpdateBy);
-                        objCmd.Parameters.AddWithValue("@UpdateIP", entITM_Item.UpdateIP);
+                        objCmd.Parameters.Add("@ItemWiseMainModelID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                        objCmd.Parameters.AddWithValue("@ItemID", entITM_ItemWiseMainModel.ItemID);
+                        objCmd.Parameters.AddWithValue("@MainModelID", entITM_ItemWiseMainModel.MainModelID);
+                        objCmd.Parameters.AddWithValue("@CreateDateTime", entITM_ItemWiseMainModel.CreateDateTime);
+                        objCmd.Parameters.AddWithValue("@CreateBy", entITM_ItemWiseMainModel.CreateBy);
+                        objCmd.Parameters.AddWithValue("@CreateIP", entITM_ItemWiseMainModel.CreateIP);
+                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entITM_ItemWiseMainModel.UpdateDateTime);
+                        objCmd.Parameters.AddWithValue("@UpdateBy", entITM_ItemWiseMainModel.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@UpdateIP", entITM_ItemWiseMainModel.UpdateIP);
                         #endregion Prepare Command
 
                         objCmd.ExecuteNonQuery();
-                        entITM_Item.ItemID = Convert.ToInt32(objCmd.Parameters["@ItemID"].Value);
+                        entITM_ItemWiseMainModel.ItemWiseMainModelID = Convert.ToInt32(objCmd.Parameters["@ItemWiseMainModelID"].Value);
 
                         return true;
                     }
@@ -101,7 +101,7 @@ namespace CostingEvalution.App_Code.DAL
 
         #region Update Operation
 
-        public Boolean Update(ITM_ItemENT entITM_Item)
+        public Boolean Update(ITM_ItemWiseMainModelENT entITM_ItemWiseMainModel)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -114,17 +114,17 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_ITM_Item_Update";
+                        objCmd.CommandText = "SP_ITM_ItemWiseMainModel_Update";
 
-                        objCmd.Parameters.AddWithValue("@ItemID", entITM_Item.ItemID);
-                        objCmd.Parameters.AddWithValue("@ItemName", entITM_Item.ItemName);
-                        objCmd.Parameters.AddWithValue("@ItemTypeID", entITM_Item.ItemTypeID);
-                        objCmd.Parameters.AddWithValue("@CreateDateTime", entITM_Item.CreateDateTime);
-                        objCmd.Parameters.AddWithValue("@CreateBy", entITM_Item.CreateBy);
-                        objCmd.Parameters.AddWithValue("@CreateIP", entITM_Item.CreateIP);
-                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entITM_Item.UpdateDateTime);
-                        objCmd.Parameters.AddWithValue("@UpdateBy", entITM_Item.UpdateBy);
-                        objCmd.Parameters.AddWithValue("@UpdateIP", entITM_Item.UpdateIP);
+                        objCmd.Parameters.AddWithValue("@ItemWiseMainModelID", entITM_ItemWiseMainModel.ItemWiseMainModelID);
+                        objCmd.Parameters.AddWithValue("@ItemID", entITM_ItemWiseMainModel.ItemID);
+                        objCmd.Parameters.AddWithValue("@MainModelID", entITM_ItemWiseMainModel.MainModelID);
+                        objCmd.Parameters.AddWithValue("@CreateDateTime", entITM_ItemWiseMainModel.CreateDateTime);
+                        objCmd.Parameters.AddWithValue("@CreateBy", entITM_ItemWiseMainModel.CreateBy);
+                        objCmd.Parameters.AddWithValue("@CreateIP", entITM_ItemWiseMainModel.CreateIP);
+                        objCmd.Parameters.AddWithValue("@UpdateDateTime", entITM_ItemWiseMainModel.UpdateDateTime);
+                        objCmd.Parameters.AddWithValue("@UpdateBy", entITM_ItemWiseMainModel.UpdateBy);
+                        objCmd.Parameters.AddWithValue("@UpdateIP", entITM_ItemWiseMainModel.UpdateIP);
 
                         #endregion Prepare Command
 
@@ -156,7 +156,7 @@ namespace CostingEvalution.App_Code.DAL
 
         #region Delete Operation
 
-        public Boolean Delete(SqlInt32 ItemID)
+        public Boolean Delete(SqlInt32 ItemWiseMainModelID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -169,9 +169,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_ITM_Item_Delete";
+                        objCmd.CommandText = "SP_ITM_ItemWiseMainModel_Delete";
                         
-                        objCmd.Parameters.AddWithValue("@ItemID", ItemID);            
+                        objCmd.Parameters.AddWithValue("@ItemWiseMainModelID", ItemWiseMainModelID);            
                         #endregion Prepare Command
 
                         objCmd.ExecuteNonQuery();
@@ -203,7 +203,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select(SqlString ItemName, SqlInt32 ItemTypeID)
+        public DataTable Select()
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -216,10 +216,9 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_ITM_Item_Select";
+                        objCmd.CommandText = "SP_ITM_ItemWiseMainModel_Select";
 
-                        objCmd.Parameters.AddWithValue("@ItemName", ItemName);
-                        objCmd.Parameters.AddWithValue("@ItemTypeID", ItemTypeID);
+                        
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
@@ -257,7 +256,7 @@ namespace CostingEvalution.App_Code.DAL
         #endregion Select
         
         #region Select PK
-        public ITM_ItemENT SelectPK(SqlInt32 ItemID)
+        public ITM_ItemWiseMainModelENT SelectPK(SqlInt32 ItemWiseMainModelID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -270,13 +269,13 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Variables
 						DataTable dt = new DataTable();
-                        ITM_ItemENT entITM_Item = new ITM_ItemENT();
+                        ITM_ItemWiseMainModelENT entITM_ItemWiseMainModel = new ITM_ItemWiseMainModelENT();
                         #endregion Variables
 
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_ITM_Item_SelectPK";
-                        objCmd.Parameters.AddWithValue("@ItemID", ItemID);
+                        objCmd.CommandText = "SP_ITM_ItemWiseMainModel_SelectPK";
+                        objCmd.Parameters.AddWithValue("@ItemWiseMainModelID", ItemWiseMainModelID);
                         #endregion Prepare Command
 
                         #region Set Controls
@@ -286,52 +285,52 @@ namespace CostingEvalution.App_Code.DAL
                         }
 						foreach (DataRow dr in dt.Rows)
 						{
-							if (!dr["ItemID"].Equals(DBNull.Value))
+							if (!dr["ItemWiseMainModelID"].Equals(DBNull.Value))
                             {
-                                entITM_Item.ItemID = Convert.ToInt32(dr["ItemID"]);
+                                entITM_ItemWiseMainModel.ItemWiseMainModelID = Convert.ToInt32(dr["ItemWiseMainModelID"]);
                             }
 
-                            if (!dr["ItemName"].Equals(DBNull.Value))
+                            if (!dr["ItemID"].Equals(DBNull.Value))
                             {
-                                entITM_Item.ItemName = Convert.ToString(dr["ItemName"]);
+                                entITM_ItemWiseMainModel.ItemID = Convert.ToInt32(dr["ItemID"]);
                             }
 
-                            if (!dr["ItemTypeID"].Equals(DBNull.Value))
+                            if (!dr["MainModelID"].Equals(DBNull.Value))
                             {
-                                entITM_Item.ItemTypeID = Convert.ToInt32(dr["ItemTypeID"]);
+                                entITM_ItemWiseMainModel.MainModelID = Convert.ToInt32(dr["MainModelID"]);
                             }
 
                             if (!dr["CreateDateTime"].Equals(DBNull.Value))
                             {
-                                entITM_Item.CreateDateTime = Convert.ToDateTime(dr["CreateDateTime"]);
+                                entITM_ItemWiseMainModel.CreateDateTime = Convert.ToDateTime(dr["CreateDateTime"]);
                             }
 
                             if (!dr["CreateBy"].Equals(DBNull.Value))
                             {
-                                entITM_Item.CreateBy = Convert.ToInt32(dr["CreateBy"]);
+                                entITM_ItemWiseMainModel.CreateBy = Convert.ToInt32(dr["CreateBy"]);
                             }
 
                             if (!dr["CreateIP"].Equals(DBNull.Value))
                             {
-                                entITM_Item.CreateIP = Convert.ToString(dr["CreateIP"]);
+                                entITM_ItemWiseMainModel.CreateIP = Convert.ToString(dr["CreateIP"]);
                             }
 
                             if (!dr["UpdateDateTime"].Equals(DBNull.Value))
                             {
-                                entITM_Item.UpdateDateTime = Convert.ToDateTime(dr["UpdateDateTime"]);
+                                entITM_ItemWiseMainModel.UpdateDateTime = Convert.ToDateTime(dr["UpdateDateTime"]);
                             }
 
                             if (!dr["UpdateBy"].Equals(DBNull.Value))
                             {
-                                entITM_Item.UpdateBy = Convert.ToInt32(dr["UpdateBy"]);
+                                entITM_ItemWiseMainModel.UpdateBy = Convert.ToInt32(dr["UpdateBy"]);
                             }
 
                             if (!dr["UpdateIP"].Equals(DBNull.Value))
                             {
-                                entITM_Item.UpdateIP = Convert.ToString(dr["UpdateIP"]);
+                                entITM_ItemWiseMainModel.UpdateIP = Convert.ToString(dr["UpdateIP"]);
                             }
 						}
-						return entITM_Item;
+						return entITM_ItemWiseMainModel;
 
                         #endregion Set Controls
                     }
@@ -373,7 +372,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SP_ITM_Item_SelectForDropDown";
+                        objCmd.CommandText = "SP_ITM_ItemWiseMainModel_SelectForDropDown";
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls
