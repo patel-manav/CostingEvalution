@@ -13,6 +13,8 @@
     <link rel="stylesheet" href='<%=ResolveClientUrl("~/Content/AdminPanel/assets/dist/css/adminlte.min.css") %>'>
 </head>
 <body class="hold-transition login-page">
+<%--<body class="hold-transition login-page" style="background-image:url('../../Content/AdminPanel/assets/t1.jpg'); background-repeat:no-repeat;">--%>
+
     <form runat="server">
         <div class="login-box">
             <!-- /.login-logo -->

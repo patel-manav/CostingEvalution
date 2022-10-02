@@ -24,7 +24,7 @@
             <asp:DropDownList runat="server" ID="ddlItemType" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
         </div>
 
-         <div class="col-md-3 form-group">
+        <div class="col-md-3 form-group">
             MainModel*
             <asp:Label runat="server" ID="lblMainModel" Visible="false" ForeColor="Red" Font-Bold="true" Text="  This Field Is Required"></asp:Label>
             <asp:ListBox ID="lbMainModel"
@@ -35,18 +35,60 @@
                 data-placeholder="Select a MainModel"></asp:ListBox>
         </div>
 
-      <%--  <div class="col-md-1 mt-4">
+        <%--  <div class="col-md-1 mt-4">
             <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary" Style="width: 100%;" Text="Add" />
         </div>--%>
 
         <div class="col-md-1 mt-4">
-            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Style="width: 100%;" Text="Save" OnClick="btnSave_Click"/>
+            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Style="width: 100%;" Text="Save" OnClick="btnSave_Click" />
         </div>
 
         <div class="col-md-1 mt-4">
-            <asp:Button ID="btnClear" runat="server" CssClass="btn btn-secondary" Style="width: 100%;" Text="Clear" OnClick="btnClear_Click"/>
+            <asp:Button ID="btnClear" runat="server" CssClass="btn btn-secondary" Style="width: 100%;" Text="Clear" OnClick="btnClear_Click" />
         </div>
     </div>
+
+
+
+    <div class="container row mt-5">        
+            <asp:Repeater ID="rpRawMaterial" runat="server">
+                <ItemTemplate>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>RawMaterial Name:</td>
+                            <td><asp:DropDownList runat="server" ID="ddlRawMaterial" DataSource="<%#Eval("RawMaterialiD")%>" DataSourceID></asp:DropDownList></td>
+                            <td>Unit</td>
+                            <td>Price</td>
+                        </tr>
+                        <tr>
+                            <td><%#Eval("RawMaterialName")%></td>
+                            <td><%#Eval("UnitName")%></td>
+                            <td><%#Eval("RawMaterialPrice")%></td>
+                        </tr>
+                    </table>
+                </ItemTemplate>
+            </asp:Repeater>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

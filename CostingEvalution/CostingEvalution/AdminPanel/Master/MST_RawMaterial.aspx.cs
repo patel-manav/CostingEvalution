@@ -99,7 +99,7 @@ namespace CostingEvalution.AdminPanel.Master
 
             if (ddlUnit.SelectedIndex != 0)
             {
-                entMST_RawMaterial.UnitID = Convert.ToInt32(ddlUnit.SelectedValue.ToString());
+                entMST_RawMaterial.UnitID = Convert.ToInt32(ddlUnit.SelectedValue);
             }
 
             if (txtRawMaterialPrice.Text.Trim() != "")
@@ -216,11 +216,11 @@ namespace CostingEvalution.AdminPanel.Master
         #endregion Delete/Update
 
         #region FillDataByPK
-        private void FillDataByPK(SqlInt32 EmployeeDesignationID)
+        private void FillDataByPK(SqlInt32 RawMaterialID)
         {
             #region Variable
             MST_RawMaterialBAL balMST_RawMaterial = new MST_RawMaterialBAL();
-            MST_RawMaterialENT entMST_RawMaterial = balMST_RawMaterial.SelectPK(EmployeeDesignationID);
+            MST_RawMaterialENT entMST_RawMaterial = balMST_RawMaterial.SelectPK(RawMaterialID);
             #endregion Variable
 
             #region Fill Data

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace CostingEvalution.AdminPanel.Item
 {
@@ -24,6 +26,7 @@ namespace CostingEvalution.AdminPanel.Item
             {
                 FillDropDownList();
                 //FillGridView();
+                BindRawMaterialRepeator();
             }
         }
 
@@ -55,6 +58,25 @@ namespace CostingEvalution.AdminPanel.Item
 
         //}
         #endregion Fill GridView
+
+        #region RawMaterial Repeator
+        private void BindRawMaterialRepeator()
+        {
+            #region Variable
+            MST_RawMaterialBAL balMST_RawMaterial = new MST_RawMaterialBAL();
+            #endregion Variable
+
+            #region Bind Data
+            DataTable dt = balMST_RawMaterial.Select();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                rpRawMaterial.DataSource = dt;
+                rpRawMaterial.DataBind();
+            }
+            #endregion Bind Data
+        }
+        #endregion RawMaterial Repeator
 
         #region Save Click
         protected void btnSave_Click(object sender, EventArgs e)
