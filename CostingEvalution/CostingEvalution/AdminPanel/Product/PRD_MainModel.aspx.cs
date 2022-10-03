@@ -76,7 +76,7 @@ namespace CostingEvalution.AdminPanel.Product
                 lblMainModelName.Visible = true;
                 return;
             }
-            else if (lbQuestion.Items.Count == 0)
+            else if (lbQuestion.GetSelectedIndices().Count() <= 0)
             {
                 ClearValidation();
                 lblQuestion.Visible = true;
@@ -89,12 +89,12 @@ namespace CostingEvalution.AdminPanel.Product
             {
                 entPRD_MainModel.MainModelID = Convert.ToInt32(hfMainModelID.Value.Trim());
             }
-            
+
             if (txtMainModelName.Text.Trim() != "")
             {
                 entPRD_MainModel.MainModelName = txtMainModelName.Text.Trim();
             }
-      
+
             entPRD_MainModel.CreateDateTime = entPRD_MainModelWiseQuestion.CreateDateTime = DateTime.Now;
             entPRD_MainModel.CreateBy = entPRD_MainModelWiseQuestion.CreateBy = Convert.ToInt32(Session["UserID"]);
             entPRD_MainModel.CreateIP = entPRD_MainModelWiseQuestion.CreateIP = Session["IP"].ToString();
@@ -107,15 +107,19 @@ namespace CostingEvalution.AdminPanel.Product
             #region Insert/Update
             if (hfMainModelID.Value != "")
             {
-                if (balPRD_MainModel.Update(entPRD_MainModel))
+                balPRD_MainModelWiseQuestion.Delete(Convert.ToInt32(hfMainModelID.Value));
+                #region SelectMultipleQuestion
+                foreach (int selectedIndex in lbQuestion.GetSelectedIndices())
                 {
-                    ClearControl();
-                    ClearValidation();
+                    entPRD_MainModelWiseQuestion.MainModelID = (Convert.ToInt32(hfMainModelID.Value));
+                    entPRD_MainModelWiseQuestion.QuestionID = Convert.ToInt32(lbQuestion.Items[selectedIndex].Value);
+
+                    balPRD_MainModelWiseQuestion.Insert(entPRD_MainModelWiseQuestion);
                 }
-                else
-                {
-            
-                }
+                #endregion SelectMultipleQuestion
+                ClearControl();
+                ClearValidation();
+
             }
             else
             {
@@ -136,7 +140,7 @@ namespace CostingEvalution.AdminPanel.Product
                 }
                 else
                 {
-            
+
                 }
             }
             #endregion Insert/Update
@@ -157,7 +161,7 @@ namespace CostingEvalution.AdminPanel.Product
             FillGridView();
             hfMainModelID.Value = null;
             txtMainModelName.Text = "";
-            lbQuestion.Items.Remove(lbQuestion.SelectedItem);
+            lbQuestion.ClearSelection();
         }
         #endregion Clear Control
 
@@ -211,6 +215,10 @@ namespace CostingEvalution.AdminPanel.Product
             #region Variable
             PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
             PRD_MainModelENT entPRD_MainModel = balPRD_MainModel.SelectPK(MainModelID);
+
+            PRD_MainModelWiseQuestionBAL balPRD_MainModelWiseQuestion = new PRD_MainModelWiseQuestionBAL();
+            DataTable dtQuestionForMainModel = balPRD_MainModelWiseQuestion.SelectByMainModelId(MainModelID);
+
             #endregion Variable
 
             #region Fill Data
@@ -222,14 +230,19 @@ namespace CostingEvalution.AdminPanel.Product
             {
                 txtMainModelName.Text = entPRD_MainModel.MainModelName.Value;
             }
-            //if (!entPRD_Question.ItemTypeID.IsNull)
-            //{
-            //    ddlItemType.SelectedValue = entPRD_Question.ItemTypeID.Value.ToString();
-            //}
-            //if (!entPRD_Question.Description.IsNull)
-            //{
-            //    txtQuestionDescription.Text = entPRD_Question.Description.Value.ToString();
-            //}
+
+            if (dtQuestionForMainModel.Rows.Count > 0)
+            {
+                foreach (DataRow drQuestion in dtQuestionForMainModel.Rows)
+                {
+                    string questionId = drQuestion["QuestionID"].ToString();
+
+                    if (drQuestion["QuestionID"].ToString() != String.Empty)
+                    {
+                        lbQuestion.Items.FindByValue(questionId).Selected = true;
+                    }
+                }
+            }
             #endregion Fill Data
         }
         #endregion FillDataByPK

@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-md-1 mt-4">
-            <asp:Button ID="btnClear" runat="server" CssClass="btn btn-secondary" Style="width: 100%;" Text="Clear" />
+            <asp:Button ID="btnClear" runat="server" CssClass="btn btn-secondary" Style="width: 100%;" Text="Clear" OnClick="btnClear_Click" />
         </div>
     </div>
 

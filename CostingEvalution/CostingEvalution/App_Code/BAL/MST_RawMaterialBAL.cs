@@ -118,6 +118,14 @@ namespace CostingEvalution.App_Code.BAL
         }
         #endregion Select For Dropdown
 
+        #region Select
+        public DataTable SelectForItem(SqlInt32 RawMaterialID)
+        {
+            MST_RawMaterialDAL dalMST_RawMaterial = new MST_RawMaterialDAL();
+            return dalMST_RawMaterial.SelectForItem(RawMaterialID);
+        }
+        #endregion Select
+
         #endregion Select Operation
     }
 }

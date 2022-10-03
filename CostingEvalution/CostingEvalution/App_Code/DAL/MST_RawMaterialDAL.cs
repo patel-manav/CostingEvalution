@@ -421,6 +421,58 @@ namespace CostingEvalution.App_Code.DAL
 
         #endregion Select For Dropdownlist
 
+        #region Select For Item
+        public DataTable SelectForItem(SqlInt32 RawMaterialID)
+        {
+            using (SqlConnection objConn = new SqlConnection(ConnectionString))
+            {
+                if (objConn.State != ConnectionState.Open)
+                    objConn.Open();
+
+                using (SqlCommand objCmd = objConn.CreateCommand())
+                {
+                    try
+                    {
+                        #region Prepare Command
+                        objCmd.CommandType = CommandType.StoredProcedure;
+                        objCmd.CommandText = "SP_MST_RawMaterial_SelectForItem";
+                        objCmd.Parameters.AddWithValue("@RawMaterialID", RawMaterialID);
+                        #endregion Prepare Command
+
+                        #region ReadData and Set Controls
+                        DataTable dt = new DataTable();
+                        using (SqlDataReader objSDR = objCmd.ExecuteReader())
+                        {
+                            dt.Load(objSDR);
+                        }
+                        return dt;
+
+                        #endregion ReadData and Set Controls
+                    }
+
+                    catch (SqlException sqlex)
+                    {
+                        Message = sqlex.Message.ToString();
+                        return null;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Message = ex.Message.ToString();
+                        return null;
+                    }
+
+                    finally
+                    {
+                        if (objConn.State == ConnectionState.Open)
+                            objConn.Close();
+                    }
+                }
+
+            }
+        }
+        #endregion Select PK
+
         #endregion Select Operation
     }
 }

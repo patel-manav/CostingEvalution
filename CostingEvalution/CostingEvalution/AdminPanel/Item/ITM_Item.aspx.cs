@@ -11,11 +11,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
+using CostingEvalution.AdminPanel.Master;
+using System.Net;
 
 namespace CostingEvalution.AdminPanel.Item
 {
     public partial class ITM_Item : System.Web.UI.Page
     {
+        static DataTable dtItem;
+        static int dtId = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserName"] == null || Session["UserID"] == null)
@@ -24,59 +29,72 @@ namespace CostingEvalution.AdminPanel.Item
             }
             if (!Page.IsPostBack)
             {
+                initItemDataTable();
                 FillDropDownList();
-                //FillGridView();
-                BindRawMaterialRepeator();
+                RawMaterialRepeator();
             }
         }
+
+        #region Init Item-DataTable
+        private void initItemDataTable()
+        {
+            dtItem = new DataTable("dtItem");
+            dtItem.Columns.Add("Id", typeof(int));
+            dtItem.Columns.Add("RawMaterialNameId", typeof(int));
+            dtItem.Columns.Add("RawMaterialName", typeof(string));
+            dtItem.Columns.Add("UnitName", typeof(string));
+            dtItem.Columns.Add("RawMaterialPrice", typeof(Decimal));
+            dtItem.Columns.Add("RawMaterialQuantity", typeof(Decimal));
+            dtItem.Columns.Add("TotalAmount", typeof(Decimal));
+            dtItem.Columns.Add("Description", typeof(string));
+        }
+        #endregion Init Item-DataTable
 
         #region FillDropDownList
         private void FillDropDownList()
         {
             CommonFillMethods.FillDropDownListItemType(ddlItemType);
             CommonFillMethods.FillDropDownListMainModel(lbMainModel);
-
         }
         #endregion FillDropDownList
 
-        #region Fill GridView
-        //private void FillGridView()
-        //{
-        //    #region Variable
-        //    ITM_ItemBAL balITM_Item = new ITM_ItemBAL();
-        //    #endregion Variable
-
-        //    #region Bind Data
-        //    DataTable dt = balITM_Item.Select();
-
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        gvQuestion.DataSource = dt;
-        //        gvQuestion.DataBind();
-        //    }
-        //    #endregion Bind Data
-
-        //}
-        #endregion Fill GridView
-
         #region RawMaterial Repeator
-        private void BindRawMaterialRepeator()
+        private void RawMaterialRepeator()
         {
-            #region Variable
-            MST_RawMaterialBAL balMST_RawMaterial = new MST_RawMaterialBAL();
-            #endregion Variable
-
             #region Bind Data
-            DataTable dt = balMST_RawMaterial.Select();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                rpRawMaterial.DataSource = dt;
-                rpRawMaterial.DataBind();
-            }
+            addRowToDataTable();
+            bindDataTable();
             #endregion Bind Data
         }
         #endregion RawMaterial Repeator
+
+        #region AddRowIn-DataTable
+        private void addRowToDataTable()
+        {
+            DataRow dtRow = dtItem.NewRow();
+            dtRow["Id"] = dtId;
+            dtRow["RawMaterialNameId"] = 1;
+            dtRow["RawMaterialName"] = "";
+            dtRow["UnitName"] = "";
+            dtRow["RawMaterialPrice"] = 0.0;
+            dtRow["RawMaterialQuantity"] = 0.0;
+            dtRow["Description"] = "";
+            dtRow["TotalAmount"] = 0.0;
+            dtItem.Rows.Add(dtRow);
+            dtId += 1;
+        }
+        #endregion AddRowIn-DataTable
+
+        #region Bind RawMaterial Repeator
+        private void bindDataTable()
+        {
+            if (dtItem != null && dtItem.Rows.Count > 0)
+            {
+                rpRawMaterial.DataSource = dtItem;
+                rpRawMaterial.DataBind();
+            }
+        }
+        #endregion Bind RawMaterial Repeator
 
         #region Save Click
         protected void btnSave_Click(object sender, EventArgs e)
@@ -197,76 +215,155 @@ namespace CostingEvalution.AdminPanel.Item
 
         #endregion Clear Control
 
-        #region Delete/Update
-        //protected void gvMainModel_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    #region Variable
-        //    PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
-        //    #endregion Variable
+        #region Fill RawMaterial DropDown In Repeater
+        protected void rpRawMaterial_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                RepeaterItem item = e.Item;
+                HiddenField hfId = (HiddenField)item.FindControl("hfId");
+                DropDownList ddlRawMaterial = (DropDownList)item.FindControl("ddlRawMaterial");
+                CommonFillMethods.FillDropDownListRawMaterial(ddlRawMaterial);
 
-        //    #region Clear Validation
-        //    ClearValidation();
-        //    #endregion Clear Validation
+                DataRow dr = dtItem.Select("Id = " + Convert.ToInt32(hfId.Value))[0];
+                ddlRawMaterial.SelectedValue = dr["RawMaterialNameId"].ToString();
+            }
+        }
+        #endregion Fill RawMaterial DropDown In Repeater
 
-        //    #region Delete Record
-        //    if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
-        //    {
-        //        if (balPRD_MainModel.Delete(Convert.ToInt32(e.CommandArgument)))
-        //        {
-        //            ClearControl();
-        //        }
-        //        else
-        //        {
+        #region Change Unit_Price Based On RawMaterial Selection
+        protected void ddlRawMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = sender as DropDownList;
+            RepeaterItem item = ddl.NamingContainer as RepeaterItem;
 
-        //        }
-        //    }
-        //    #endregion Delete Record
+            DataTable dt = new MST_RawMaterialBAL().SelectForItem(Convert.ToInt32(ddl.SelectedValue));
 
-        //    #region Call FillDataByPK
-        //    else if (e.CommandName == "EditRecord" && e.CommandArgument != null)
-        //    {
-        //        FillDataByPK(Convert.ToInt32(e.CommandArgument));
-        //    }
-        //    #endregion Call FillDataByPK
-        //}
-        #endregion Delete/Update
+            Label lblUnitName = (Label)item.FindControl("lblUnitName");
+            Label lblRawMaterialPrice = (Label)item.FindControl("lblRawMaterialPrice");
+            Label lblTotalAmount = (Label)item.FindControl("lblTotalAmount");
+            TextBox txtRawMaterialQuantity = (TextBox)item.FindControl("txtRawMaterialQuantity");
 
-        #region FillDataByPK
-        //private void FillDataByPK(SqlInt32 MainModelID)
-        //{
-        //    #region Variable
-        //    PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
-        //    PRD_MainModelENT entPRD_MainModel = balPRD_MainModel.SelectPK(MainModelID);
-        //    #endregion Variable
+            if (dt.Rows.Count == 1)
+            {
+                DataRow dr = dt.Rows[0];
+                if (dr["UnitName"] != null)
+                {
+                    lblUnitName.Text = dr["UnitName"].ToString();
+                }
 
-        //    #region Fill Data
-        //    if (!entPRD_MainModel.MainModelID.IsNull)
-        //    {
-        //        hfMainModelID.Value = entPRD_MainModel.MainModelID.Value.ToString();
-        //    }
-        //    if (!entPRD_MainModel.MainModelName.IsNull)
-        //    {
-        //        txtMainModelName.Text = entPRD_MainModel.MainModelName.Value;
-        //    }
-        //    //if (!entPRD_Question.ItemTypeID.IsNull)
-        //    //{
-        //    //    ddlItemType.SelectedValue = entPRD_Question.ItemTypeID.Value.ToString();
-        //    //}
-        //    //if (!entPRD_Question.Description.IsNull)
-        //    //{
-        //    //    txtQuestionDescription.Text = entPRD_Question.Description.Value.ToString();
-        //    //}
-        //    #endregion Fill Data
-        //}
-        #endregion FillDataByPK
+                if (dr["RawMaterialPrice"] != null)
+                {
+                    lblRawMaterialPrice.Text = dr["RawMaterialPrice"].ToString();
+                }
+                lblTotalAmount.Text = String.Empty;
+                txtRawMaterialQuantity.Text = String.Empty;
+            }
+            else
+            {
+                lblRawMaterialPrice.Text = String.Empty;
+                lblUnitName.Text = String.Empty;
+                lblTotalAmount.Text = String.Empty;
+                txtRawMaterialQuantity.Text = String.Empty;
+            }
+            CalculateGrandTotalAmount();
+        }
+        #endregion Change Unit_Price Based On RawMaterial Selection
 
-        #region PageIndex Change
-        //protected void gvMainModel_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    gvMainModel.PageIndex = e.NewPageIndex;
-        //    FillGridView();
-        //    gvMainModel.DataBind();
-        //}
-        #endregion PageIndex Change 
+        #region Calculation TotalAmount(Price*Quantity)
+        protected void txtRawMaterialQuantity_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txtBox = sender as TextBox;
+            RepeaterItem item = txtBox.NamingContainer as RepeaterItem;
+
+            Label lblRawMaterialPrice = (Label)item.FindControl("lblRawMaterialPrice");
+            Label lblTotalAmount = (Label)item.FindControl("lblTotalAmount");
+
+            if (lblRawMaterialPrice.Text.Trim() != String.Empty && txtBox.Text.Trim() != String.Empty)
+            {
+                lblTotalAmount.Text = (Convert.ToDecimal(lblRawMaterialPrice.Text) * Convert.ToDecimal(txtBox.Text)).ToString();
+            }
+            CalculateGrandTotalAmount();
+        }
+        #endregion Calculation TotalAmount(Price*Quantity)
+
+        #region Add Click
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            FillDataTableFromRepeater();
+            addRowToDataTable();
+            bindDataTable();
+        }
+        #endregion Add Click
+
+        #region For Consitant Data Whenever Add New Row or Select RawMaterial
+        private void FillDataTableFromRepeater()
+        {
+            foreach (RepeaterItem item in rpRawMaterial.Items)
+            {
+                HiddenField hfId = (HiddenField)item.FindControl("hfId");
+                DropDownList ddlRawMaterial = (DropDownList)item.FindControl("ddlRawMaterial");
+                Label lblUnitName = (Label)item.FindControl("lblUnitName");
+                Label lblRawMaterialPrice = (Label)item.FindControl("lblRawMaterialPrice");
+                TextBox txtRawMaterialQuantity = (TextBox)item.FindControl("txtRawMaterialQuantity");
+                Label lblTotalAmount = (Label)item.FindControl("lblTotalAmount");
+                TextBox txtDescription = (TextBox)item.FindControl("txtDescription");
+
+                DataRow dr = dtItem.Select("Id = " + Convert.ToInt32(hfId.Value))[0];
+
+                if (ddlRawMaterial.SelectedIndex > 0)
+                {
+                    if (ddlRawMaterial.SelectedIndex != 0)
+                    {
+                        dr["RawMaterialNameId"] = ddlRawMaterial.SelectedValue;
+                        dr["RawMaterialName"] = ddlRawMaterial.SelectedItem;
+                    }
+                    if (lblUnitName.Text.Trim() != String.Empty)
+                    {
+                        dr["UnitName"] = lblUnitName.Text;
+                    }
+                    if (lblRawMaterialPrice.Text.Trim() != String.Empty)
+                    {
+                        dr["RawMaterialPrice"] = lblRawMaterialPrice.Text;
+                    }
+                    if (txtRawMaterialQuantity.Text.Trim() != String.Empty)
+                    {
+                        dr["RawMaterialQuantity"] = txtRawMaterialQuantity.Text;
+                    }
+                    if (txtDescription.Text.Trim() != String.Empty)
+                    {
+                        dr["Description"] = txtDescription.Text;
+                    }
+                    if (lblTotalAmount.Text.Trim() != String.Empty)
+                    {
+                        dr["TotalAmount"] = Convert.ToDecimal(lblRawMaterialPrice.Text) * Convert.ToDecimal(txtRawMaterialQuantity.Text);
+                    }
+                }
+            }
+        }
+        #endregion For Consitant Data Whenever Add New Row or Select RawMaterial
+
+        #region Delete Perticular Row From Repetor
+        protected void rpRawMaterial_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            FillDataTableFromRepeater();
+            if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
+            {
+                DataRow dr = dtItem.Select("Id = " + Convert.ToInt32(e.CommandArgument))[0];
+                dtItem.Rows.Remove(dr);
+            }
+            bindDataTable();
+            CalculateGrandTotalAmount();
+        }
+        #endregion Delete Perticular Row From Repetor
+
+        #region Calculate Grand-Total Amount(Sum of All Total Amount)
+        private void CalculateGrandTotalAmount()
+        {
+            FillDataTableFromRepeater();
+            var total = dtItem.Compute("Sum(TotalAmount)", string.Empty);
+            lblGrandTotalAmount.Text = total.ToString();
+        }
+        #endregion Calculate Grand-Total Amount(Sum of All Total Amount)
     }
 }

@@ -89,5 +89,21 @@ namespace CostingEvalution.App_Code
         }
         #endregion MainModel DropDown
 
+        #region Raw Material DropDown
+        public static void FillDropDownListRawMaterial(DropDownList ddl)
+        {
+            MST_RawMaterialBAL balMST_RawMaterial = new MST_RawMaterialBAL();
+            DataTable dt = balMST_RawMaterial.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "RawMaterialId";
+                ddl.DataTextField = "RawMaterialName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select Raw Material", "-1"));
+            }
+        }
+        #endregion Raw Material DropDown
+
     }
 }

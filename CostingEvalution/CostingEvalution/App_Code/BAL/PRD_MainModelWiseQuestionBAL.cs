@@ -58,11 +58,11 @@ namespace CostingEvalution.App_Code.BAL
         #endregion Insert Operation
 
         #region Delele Operation
-        public Boolean Delete(SqlInt32 MainModelWiseQuestionID)
+        public Boolean Delete(SqlInt32 MainModelID)
         {
             PRD_MainModelWiseQuestionDAL dalPRD_MainModelWiseQuestion = new PRD_MainModelWiseQuestionDAL();
 
-            if (dalPRD_MainModelWiseQuestion.Delete(MainModelWiseQuestionID))
+            if (dalPRD_MainModelWiseQuestion.Delete(MainModelID))
             {
                 return true;
             }
@@ -117,6 +117,14 @@ namespace CostingEvalution.App_Code.BAL
             return dalPRD_MainModelWiseQuestion.SelectForDropDown();
         }
         #endregion Select For Dropdown
+
+        #region SelectByMainModelId
+        public DataTable SelectByMainModelId(SqlInt32 MainModelID)
+        {
+            PRD_MainModelWiseQuestionDAL dalPRD_MainModelWiseQuestion = new PRD_MainModelWiseQuestionDAL();
+            return dalPRD_MainModelWiseQuestion.SelectByMainModelId(MainModelID);
+        }
+        #endregion SelectByMainModelId
 
         #endregion Select Operation
     }
