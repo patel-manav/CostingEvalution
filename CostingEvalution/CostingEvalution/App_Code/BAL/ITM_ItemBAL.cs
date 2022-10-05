@@ -94,10 +94,10 @@ namespace CostingEvalution.App_Code.BAL
         #region Select Operation
 
         #region Select
-        public DataTable Select(SqlString ItemName, SqlInt32 ItemTypeID)
+        public DataTable Select(SqlInt32 ItemID)
         {
             ITM_ItemDAL dalITM_Item = new ITM_ItemDAL();
-            return dalITM_Item.Select(ItemName, ItemTypeID);
+            return dalITM_Item.Select(ItemID);
         }
         #endregion Select
 
@@ -117,6 +117,14 @@ namespace CostingEvalution.App_Code.BAL
             return dalITM_Item.SelectForDropDown();
         }
         #endregion Select For Dropdown
+
+        #region SelectWithPrice
+        public DataTable SelectWithPrice()
+        {
+            ITM_ItemDAL dalITM_Item = new ITM_ItemDAL();
+            return dalITM_Item.SelectWithPrice();
+        }
+        #endregion SelectWithPrice
 
         #endregion Select Operation
     }

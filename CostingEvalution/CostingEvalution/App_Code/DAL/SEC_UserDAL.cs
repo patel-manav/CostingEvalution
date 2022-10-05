@@ -439,7 +439,7 @@ namespace CostingEvalution.App_Code.DAL
                     {
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "SEC_Login_Select";
+                        objCmd.CommandText = "SP_SEC_Login_Select";
                         objCmd.Parameters.AddWithValue("@UserName", UserName);
                         objCmd.Parameters.AddWithValue("@UserPassword", UserPassword);
 

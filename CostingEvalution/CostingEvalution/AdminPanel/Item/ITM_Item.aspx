@@ -49,7 +49,7 @@
     </div>
 
     <div class="container row mt-5">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-responsive">
             <tr>
                 <th>RawMaterial Name</th>
                 <th>Unit</th>
@@ -64,7 +64,7 @@
                     <tr>
                         <asp:HiddenField ID="hfId" runat="server" Value='<%#Eval("Id")%>' />
                         <td>
-                            <asp:DropDownList runat="server" ID="ddlRawMaterial" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlRawMaterial_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="ddlRawMaterial" Style="width: 100%" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlRawMaterial_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                         <td>
                             <asp:Label runat="server" ID="lblUnitName" Text='<%#Eval("UnitName")%>'></asp:Label></td>
@@ -84,7 +84,11 @@
                 </ItemTemplate>
             </asp:Repeater>
         </table>
-        <asp:Label runat="server" ID="lblGrandTotalAmount"></asp:Label>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <asp:Label runat="server" ID="lblGrandTotalAmount"></asp:Label>
+        </div>
     </div>
 </asp:Content>
 

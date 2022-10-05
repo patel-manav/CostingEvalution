@@ -203,7 +203,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select()
+        public DataTable Select(SqlInt32 ItemID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -217,8 +217,9 @@ namespace CostingEvalution.App_Code.DAL
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
                         objCmd.CommandText = "SP_ITM_ItemWiseMainModel_Select";
+                        objCmd.Parameters.AddWithValue("@ItemID", ItemID);
 
-                        
+
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls

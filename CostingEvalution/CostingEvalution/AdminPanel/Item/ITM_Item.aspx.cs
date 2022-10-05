@@ -29,11 +29,72 @@ namespace CostingEvalution.AdminPanel.Item
             }
             if (!Page.IsPostBack)
             {
-                initItemDataTable();
                 FillDropDownList();
+                initItemDataTable();
                 RawMaterialRepeator();
+                if (Request.QueryString["ItemID"] != null && Request.QueryString["ItemID"].ToString() != "")
+                {
+                    hfItemID.Value = Request.QueryString["ItemID"].ToString();
+                    FIllUpdateData();
+                }
             }
         }
+
+        #region Fill Data For Update
+        private void FIllUpdateData()
+        {
+            #region Variable
+            ITM_ItemBAL balITM_Item = new ITM_ItemBAL();
+            ITM_ItemENT entITM_Item = balITM_Item.SelectPK(Convert.ToInt32(hfItemID.Value.Trim()));
+
+            ITM_ItemWiseMainModelBAL balITM_ItemWiseMainModel = new ITM_ItemWiseMainModelBAL();
+            ITM_ItemWiseMainModelENT entITM_ItemWiseMainModel = new ITM_ItemWiseMainModelENT();
+
+            #endregion Variable
+
+            #region Fill Item Name And Type
+            if (!entITM_Item.ItemName.IsNull)
+            {
+                txtItemName.Text = entITM_Item.ItemName.Value;
+            }
+            if (!entITM_Item.ItemTypeID.IsNull)
+            {
+                ddlItemType.SelectedValue = entITM_Item.ItemTypeID.Value.ToString();
+            }
+            #endregion Fill Item Name And Type
+
+            #region Fill Main Model
+            DataTable dtMainModelForItem = balITM_ItemWiseMainModel.Select(Convert.ToInt32(hfItemID.Value.Trim()));
+
+            if (dtMainModelForItem.Rows.Count > 0)
+            {
+                foreach (DataRow drMainModel in dtMainModelForItem.Rows)
+                {
+                    string mainModelId = drMainModel["MainModelID"].ToString();
+
+                    if (drMainModel["MainModelID"].ToString() != String.Empty)
+                    {
+                        lbMainModel.Items.FindByValue(mainModelId).Selected = true;
+                    }
+                }
+            }
+            #endregion Fill Main Model
+
+
+            ITM_ItemWiseRawMaterialENT entITM_ItemWiseRawMaterial = new ITM_ItemWiseRawMaterialENT();
+            ITM_ItemWiseRawMaterialBAL balITM_ItemWiseRawMaterial = new ITM_ItemWiseRawMaterialBAL();
+
+        }
+        #endregion Fill Data For Update
+
+
+        #region FillDropDownList
+        private void FillDropDownList()
+        {
+            CommonFillMethods.FillDropDownListItemType(ddlItemType);
+            CommonFillMethods.FillDropDownListMainModel(lbMainModel);
+        }
+        #endregion FillDropDownList
 
         #region Init Item-DataTable
         private void initItemDataTable()
@@ -50,25 +111,15 @@ namespace CostingEvalution.AdminPanel.Item
         }
         #endregion Init Item-DataTable
 
-        #region FillDropDownList
-        private void FillDropDownList()
-        {
-            CommonFillMethods.FillDropDownListItemType(ddlItemType);
-            CommonFillMethods.FillDropDownListMainModel(lbMainModel);
-        }
-        #endregion FillDropDownList
-
         #region RawMaterial Repeator
         private void RawMaterialRepeator()
         {
-            #region Bind Data
             addRowToDataTable();
             bindDataTable();
-            #endregion Bind Data
         }
         #endregion RawMaterial Repeator
 
-        #region AddRowIn-DataTable
+        #region Add Row In DataTable
         private void addRowToDataTable()
         {
             DataRow dtRow = dtItem.NewRow();
@@ -83,9 +134,9 @@ namespace CostingEvalution.AdminPanel.Item
             dtItem.Rows.Add(dtRow);
             dtId += 1;
         }
-        #endregion AddRowIn-DataTable
+        #endregion Add Row In DataTable
 
-        #region Bind RawMaterial Repeator
+        #region Bind Raw Material Repeator
         private void bindDataTable()
         {
             if (dtItem != null && dtItem.Rows.Count > 0)
@@ -94,126 +145,7 @@ namespace CostingEvalution.AdminPanel.Item
                 rpRawMaterial.DataBind();
             }
         }
-        #endregion Bind RawMaterial Repeator
-
-        #region Save Click
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            #region Variable
-            ITM_ItemENT entITM_Item = new ITM_ItemENT();
-            ITM_ItemBAL balITM_Item = new ITM_ItemBAL();
-
-            ITM_ItemWiseMainModelENT entITM_ItemWiseMainModel = new ITM_ItemWiseMainModelENT();
-            ITM_ItemWiseMainModelBAL balITM_ItemWiseMainModel = new ITM_ItemWiseMainModelBAL();
-
-            #endregion Variable
-
-            #region Validation
-            if (txtItemName.Text.Trim() == "")
-            {
-                ClearValidation();
-                lblItemName.Visible = true;
-                return;
-            }
-            else if (ddlItemType.SelectedIndex == 0)
-            {
-                ClearValidation();
-                ddlItemType.Visible = true;
-                return;
-            }
-            #endregion Validation
-
-            #region Gather Data
-            if (hfItemID.Value != "")
-            {
-                entITM_Item.ItemID = Convert.ToInt32(hfItemID.Value.Trim());
-            }
-
-            if (txtItemName.Text.Trim() != "")
-            {
-                entITM_Item.ItemName = txtItemName.Text.Trim();
-            }
-
-            if (ddlItemType.SelectedIndex != 0)
-            {
-                entITM_Item.ItemTypeID = Convert.ToInt32(ddlItemType.SelectedValue.ToString());
-            }
-
-            entITM_Item.CreateDateTime = entITM_ItemWiseMainModel.CreateDateTime = DateTime.Now;
-            entITM_Item.CreateBy = entITM_ItemWiseMainModel.CreateBy = Convert.ToInt32(Session["UserID"]);
-            entITM_Item.CreateIP = entITM_ItemWiseMainModel.CreateIP = Session["IP"].ToString();
-            entITM_Item.UpdateDateTime = entITM_ItemWiseMainModel.UpdateDateTime = DateTime.Now;
-            entITM_Item.UpdateBy = entITM_ItemWiseMainModel.UpdateBy = Convert.ToInt32(Session["UserID"]);
-            entITM_Item.UpdateIP = entITM_ItemWiseMainModel.UpdateIP = Session["IP"].ToString();
-
-            #endregion Gather Data
-
-            #region Insert/Update
-            if (hfItemID.Value != "")
-            {
-                if (balITM_Item.Update(entITM_Item))
-                {
-                    ClearControl();
-                    ClearValidation();
-                }
-                else
-                {
-
-                }
-            }
-            else
-            {
-                if (balITM_Item.Insert(entITM_Item))
-                {
-                    #region SelectMultipleModel
-                    foreach (int selectedIndex in lbMainModel.GetSelectedIndices())
-                    {
-                        //Console.WriteLine(ddlQuestion.Items[selectedIndex].Value);
-                        entITM_ItemWiseMainModel.ItemID = entITM_Item.ItemID;
-                        entITM_ItemWiseMainModel.MainModelID = Convert.ToInt32(lbMainModel.Items[selectedIndex].Value);
-
-                        balITM_ItemWiseMainModel.Insert(entITM_ItemWiseMainModel);
-                    }
-                    #endregion SelectMultipleModel
-                    ClearControl();
-                    ClearValidation();
-                }
-                else
-                {
-
-                }
-            }
-            #endregion Insert/Update
-
-        }
-        #endregion Save Click
-
-        #region Clear Control
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearControl();
-            ClearValidation();
-        }
-
-        #region Clear Control
-        private void ClearControl()
-        {
-            //FillGridView();
-            hfItemID.Value = null;
-            txtItemName.Text = "";
-            ddlItemType.SelectedIndex = 0;
-        }
-        #endregion Clear Control
-
-        #region Clear Validation
-        private void ClearValidation()
-        {
-            lblItemName.Visible = false;
-            lblItemType.Visible = false;
-        }
-        #endregion Clear Validation
-
-        #endregion Clear Control
+        #endregion Bind Raw Material Repeator
 
         #region Fill RawMaterial DropDown In Repeater
         protected void rpRawMaterial_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -231,7 +163,7 @@ namespace CostingEvalution.AdminPanel.Item
         }
         #endregion Fill RawMaterial DropDown In Repeater
 
-        #region Change Unit_Price Based On RawMaterial Selection
+        #region Change Unit And Price Based On RawMaterial Selection
         protected void ddlRawMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddl = sender as DropDownList;
@@ -268,7 +200,7 @@ namespace CostingEvalution.AdminPanel.Item
             }
             CalculateGrandTotalAmount();
         }
-        #endregion Change Unit_Price Based On RawMaterial Selection
+        #endregion Change Unit And Price Based On RawMaterial Selection
 
         #region Calculation TotalAmount(Price*Quantity)
         protected void txtRawMaterialQuantity_TextChanged(object sender, EventArgs e)
@@ -295,6 +227,29 @@ namespace CostingEvalution.AdminPanel.Item
             bindDataTable();
         }
         #endregion Add Click
+
+        #region Delete Perticular Row From Repetor
+        protected void rpRawMaterial_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            FillDataTableFromRepeater();
+            if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
+            {
+                DataRow dr = dtItem.Select("Id = " + Convert.ToInt32(e.CommandArgument))[0];
+                dtItem.Rows.Remove(dr);
+            }
+            bindDataTable();
+            CalculateGrandTotalAmount();
+        }
+        #endregion Delete Perticular Row From Repetor
+
+        #region Calculate Grand-Total Amount(Sum of All Total Amount)
+        private void CalculateGrandTotalAmount()
+        {
+            FillDataTableFromRepeater();
+            var total = dtItem.Compute("Sum(TotalAmount)", string.Empty);
+            lblGrandTotalAmount.Text = total.ToString();
+        }
+        #endregion Calculate Grand-Total Amount(Sum of All Total Amount)
 
         #region For Consitant Data Whenever Add New Row or Select RawMaterial
         private void FillDataTableFromRepeater()
@@ -343,27 +298,166 @@ namespace CostingEvalution.AdminPanel.Item
         }
         #endregion For Consitant Data Whenever Add New Row or Select RawMaterial
 
-        #region Delete Perticular Row From Repetor
-        protected void rpRawMaterial_ItemCommand(object source, RepeaterCommandEventArgs e)
+        #region Save Click
+        protected void btnSave_Click(object sender, EventArgs e)
         {
-            FillDataTableFromRepeater();
-            if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
-            {
-                DataRow dr = dtItem.Select("Id = " + Convert.ToInt32(e.CommandArgument))[0];
-                dtItem.Rows.Remove(dr);
-            }
-            bindDataTable();
-            CalculateGrandTotalAmount();
-        }
-        #endregion Delete Perticular Row From Repetor
+            #region Variable
+            ITM_ItemENT entITM_Item = new ITM_ItemENT();
+            ITM_ItemBAL balITM_Item = new ITM_ItemBAL();
 
-        #region Calculate Grand-Total Amount(Sum of All Total Amount)
-        private void CalculateGrandTotalAmount()
-        {
-            FillDataTableFromRepeater();
-            var total = dtItem.Compute("Sum(TotalAmount)", string.Empty);
-            lblGrandTotalAmount.Text = total.ToString();
+            ITM_ItemWiseMainModelENT entITM_ItemWiseMainModel = new ITM_ItemWiseMainModelENT();
+            ITM_ItemWiseMainModelBAL balITM_ItemWiseMainModel = new ITM_ItemWiseMainModelBAL();
+
+            ITM_ItemWiseRawMaterialENT entITM_ItemWiseRawMaterial = new ITM_ItemWiseRawMaterialENT();
+            ITM_ItemWiseRawMaterialBAL balITM_ItemWiseRawMaterial = new ITM_ItemWiseRawMaterialBAL();
+
+            #endregion Variable
+
+            #region Validation
+            if (txtItemName.Text.Trim() == "")
+            {
+                ClearValidation();
+                lblItemName.Visible = true;
+                return;
+            }
+            else if (ddlItemType.SelectedIndex == 0)
+            {
+                ClearValidation();
+                ddlItemType.Visible = true;
+                return;
+            }
+            else if (lbMainModel.GetSelectedIndices().Count() <= 0)
+            {
+                ClearValidation();
+                lblMainModel.Visible = true;
+                return;
+            }
+            #endregion Validation
+
+            #region Gather Data
+            if (hfItemID.Value != "")
+            {
+                entITM_Item.ItemID = Convert.ToInt32(hfItemID.Value.Trim());
+            }
+
+            if (txtItemName.Text.Trim() != "")
+            {
+                entITM_Item.ItemName = txtItemName.Text.Trim();
+            }
+
+            if (ddlItemType.SelectedIndex != 0)
+            {
+                entITM_Item.ItemTypeID = Convert.ToInt32(ddlItemType.SelectedValue.ToString());
+            }
+
+            entITM_Item.CreateDateTime = entITM_ItemWiseMainModel.CreateDateTime = entITM_ItemWiseRawMaterial.CreateDateTime = DateTime.Now;
+            entITM_Item.CreateBy = entITM_ItemWiseMainModel.CreateBy = entITM_ItemWiseRawMaterial.CreateBy = Convert.ToInt32(Session["UserID"]);
+            entITM_Item.CreateIP = entITM_ItemWiseMainModel.CreateIP = entITM_ItemWiseRawMaterial.CreateIP = Session["IP"].ToString();
+            entITM_Item.UpdateDateTime = entITM_ItemWiseMainModel.UpdateDateTime = entITM_ItemWiseRawMaterial.UpdateDateTime = DateTime.Now;
+            entITM_Item.UpdateBy = entITM_ItemWiseMainModel.UpdateBy = entITM_ItemWiseRawMaterial.UpdateBy = Convert.ToInt32(Session["UserID"]);
+            entITM_Item.UpdateIP = entITM_ItemWiseMainModel.UpdateIP = entITM_ItemWiseRawMaterial.UpdateIP = Session["IP"].ToString();
+
+            #endregion Gather Data
+
+            #region Insert/Update
+            if (hfItemID.Value != "")
+            {
+                if (balITM_Item.Update(entITM_Item))
+                {
+                    ClearControl();
+                    ClearValidation();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                if (balITM_Item.Insert(entITM_Item))
+                {
+                    #region Insert Multiple Main-Model
+                    foreach (int selectedIndex in lbMainModel.GetSelectedIndices())
+                    {
+                        entITM_ItemWiseMainModel.ItemID = entITM_Item.ItemID;
+                        entITM_ItemWiseMainModel.MainModelID = Convert.ToInt32(lbMainModel.Items[selectedIndex].Value);
+
+                        balITM_ItemWiseMainModel.Insert(entITM_ItemWiseMainModel);
+                    }
+                    #endregion Insert Multiple Main-Model
+
+                    #region Insert Multiple Raw Material
+                    foreach (RepeaterItem item in rpRawMaterial.Items)
+                    {
+                        HiddenField hfId = (HiddenField)item.FindControl("hfId");
+                        DropDownList ddlRawMaterial = (DropDownList)item.FindControl("ddlRawMaterial");
+                        Label lblUnitName = (Label)item.FindControl("lblUnitName");
+                        Label lblRawMaterialPrice = (Label)item.FindControl("lblRawMaterialPrice");
+                        TextBox txtRawMaterialQuantity = (TextBox)item.FindControl("txtRawMaterialQuantity");
+                        Label lblTotalAmount = (Label)item.FindControl("lblTotalAmount");
+                        TextBox txtDescription = (TextBox)item.FindControl("txtDescription");
+
+                        DataRow dr = dtItem.Select("Id = " + Convert.ToInt32(hfId.Value))[0];
+                        entITM_ItemWiseRawMaterial.ItemID = entITM_Item.ItemID;
+                        if (ddlRawMaterial.SelectedIndex > 0)
+                        {
+                            if (ddlRawMaterial.SelectedIndex != 0)
+                            {
+                                entITM_ItemWiseRawMaterial.RawMaterialID = Convert.ToInt32(ddlRawMaterial.SelectedValue);
+                            }
+                            if (txtRawMaterialQuantity.Text.Trim() != String.Empty)
+                            {
+                                entITM_ItemWiseRawMaterial.RawMaterialQuantity = Convert.ToInt32(txtRawMaterialQuantity.Text);
+                            }
+                            if (txtDescription.Text.Trim() != String.Empty)
+                            {
+                                entITM_ItemWiseRawMaterial.Description = txtDescription.Text;
+                            }
+                        }
+                        balITM_ItemWiseRawMaterial.Insert(entITM_ItemWiseRawMaterial);
+                    }
+
+                    #endregion Insert Multiple Raw Material
+
+                    ClearControl();
+                    ClearValidation();
+                }
+                else
+                {
+
+                }
+            }
+            #endregion Insert/Update
+
         }
-        #endregion Calculate Grand-Total Amount(Sum of All Total Amount)
+        #endregion Save Click
+
+        #region Clear Control
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearControl();
+            ClearValidation();
+        }
+
+        #region Clear Control
+        private void ClearControl()
+        {
+            hfItemID.Value = null;
+            txtItemName.Text = "";
+            ddlItemType.SelectedIndex = 0;
+            lbMainModel.ClearSelection();
+        }
+        #endregion Clear Control
+
+        #region Clear Validation
+        private void ClearValidation()
+        {
+            lblItemName.Visible = false;
+            lblItemType.Visible = false;
+            lblMainModel.Visible = false;
+        }
+        #endregion Clear Validation
+
+        #endregion Clear Control
     }
 }

@@ -67,6 +67,7 @@
     <Content Include="AdminPanel\Dashboard.aspx" />
     <Content Include="AdminPanel\Item\ITM_Item.aspx" />
     <Content Include="AdminPanel\Item\ITM_ItemType.aspx" />
+    <Content Include="AdminPanel\Item\ITM_ItemView.aspx" />
     <Content Include="AdminPanel\Master\MST_Department.aspx" />
     <Content Include="AdminPanel\Master\MST_RawMaterial.aspx" />
     <Content Include="AdminPanel\Master\MST_Unit.aspx" />
@@ -2046,6 +2047,13 @@
     <Compile Include="AdminPanel\Item\ITM_ItemType.aspx.designer.cs">
       <DependentUpon>ITM_ItemType.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPanel\Item\ITM_ItemView.aspx.cs">
+      <DependentUpon>ITM_ItemView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Item\ITM_ItemView.aspx.designer.cs">
+      <DependentUpon>ITM_ItemView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel\Master\MST_Department.aspx.cs">
       <DependentUpon>MST_Department.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2098,6 +2106,7 @@
     <Compile Include="App_Code\BAL\ITM_ItemBAL.cs" />
     <Compile Include="App_Code\BAL\ITM_ItemTypeBAL.cs" />
     <Compile Include="App_Code\BAL\ITM_ItemWiseMainModelBAL.cs" />
+    <Compile Include="App_Code\BAL\ITM_ItemWiseRawMaterialBAL.cs" />
     <Compile Include="App_Code\BAL\MST_DepartmentBAL.cs" />
     <Compile Include="App_Code\BAL\MST_RawMaterialBAL.cs" />
     <Compile Include="App_Code\BAL\MST_UnitBAL.cs" />
@@ -2110,6 +2119,7 @@
     <Compile Include="App_Code\DAL\ITM_ItemDAL.cs" />
     <Compile Include="App_Code\DAL\ITM_ItemTypeDAL.cs" />
     <Compile Include="App_Code\DAL\ITM_ItemWiseMainModelDAL.cs" />
+    <Compile Include="App_Code\DAL\ITM_ItemWiseRawMaterialDAL.cs" />
     <Compile Include="App_Code\DAL\MST_DepartmentDAL.cs" />
     <Compile Include="App_Code\DAL\MST_RawMaterialDAL.cs" />
     <Compile Include="App_Code\DAL\MST_UnitDAL.cs" />
@@ -2138,6 +2148,7 @@
     <Compile Include="App_Code\ENT\ITM_ItemENT.cs" />
     <Compile Include="App_Code\ENT\ITM_ItemTypeENT.cs" />
     <Compile Include="App_Code\ENT\ITM_ItemWiseMainModelENT.cs" />
+    <Compile Include="App_Code\ENT\ITM_ItemWiseRawMaterialENT.cs" />
     <Compile Include="App_Code\ENT\MST_DepartmentENT.cs" />
     <Compile Include="App_Code\ENT\MST_RawMaterialENT.cs" />
     <Compile Include="App_Code\ENT\MST_UnitENT.cs" />
