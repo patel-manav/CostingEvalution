@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminPanel\Dashboard.aspx" />
+    <Content Include="AdminPanel\Employee\EMP_EmployeeType.aspx" />
     <Content Include="AdminPanel\Item\ITM_Item.aspx" />
     <Content Include="AdminPanel\Item\ITM_ItemType.aspx" />
     <Content Include="AdminPanel\Item\ITM_ItemView.aspx" />
@@ -2033,6 +2034,13 @@
     <Compile Include="AdminPanel\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPanel\Employee\EMP_EmployeeType.aspx.cs">
+      <DependentUpon>EMP_EmployeeType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Employee\EMP_EmployeeType.aspx.designer.cs">
+      <DependentUpon>EMP_EmployeeType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel\Item\ITM_Item.aspx.cs">
       <DependentUpon>ITM_Item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2103,6 +2111,7 @@
     <Compile Include="AdminPanel\Security\SEC_User.aspx.designer.cs">
       <DependentUpon>SEC_User.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\BAL\EMP_EmployeeTypeBAL.cs" />
     <Compile Include="App_Code\BAL\ITM_ItemBAL.cs" />
     <Compile Include="App_Code\BAL\ITM_ItemTypeBAL.cs" />
     <Compile Include="App_Code\BAL\ITM_ItemWiseMainModelBAL.cs" />
@@ -2116,6 +2125,7 @@
     <Compile Include="App_Code\BAL\SEC_MenuBAL.cs" />
     <Compile Include="App_Code\BAL\SEC_UserWiseMenuBAL.cs" />
     <Compile Include="App_Code\CommonFillMethods.cs" />
+    <Compile Include="App_Code\DAL\EMP_EmployeeTypeDAL.cs" />
     <Compile Include="App_Code\DAL\ITM_ItemDAL.cs" />
     <Compile Include="App_Code\DAL\ITM_ItemTypeDAL.cs" />
     <Compile Include="App_Code\DAL\ITM_ItemWiseMainModelDAL.cs" />
@@ -2145,6 +2155,7 @@
     </Compile>
     <Compile Include="App_Code\BAL\SEC_UserBAL.cs" />
     <Compile Include="App_Code\DAL\SEC_UserDAL.cs" />
+    <Compile Include="App_Code\ENT\EMP_EmployeeTypeENT.cs" />
     <Compile Include="App_Code\ENT\ITM_ItemENT.cs" />
     <Compile Include="App_Code\ENT\ITM_ItemTypeENT.cs" />
     <Compile Include="App_Code\ENT\ITM_ItemWiseMainModelENT.cs" />
