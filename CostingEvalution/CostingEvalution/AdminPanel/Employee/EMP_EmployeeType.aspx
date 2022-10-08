@@ -46,13 +46,13 @@
                     <asp:BoundField DataField="EmployeeTypeName" HeaderText="Employee Type" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
 
-                    <asp:TemplateField ItemStyle-CssClass="text-center">
-                        <ItemTemplate>
+                  <%--  <asp:TemplateField ItemStyle-CssClass="text-center">
+                        <ItemTemplate>--%>
                             <%--<asp:LinkButton ID="btnDelete" CommandName="DeleteRecord" CommandArgument='<%# Eval("MenuID") %>' CssClass="fa fa-trash-alt mr-2 text-danger" runat="server"></asp:LinkButton>--%>
-                            <asp:LinkButton ID="btnEdit" CommandName="EditRecord" CommandArgument='<%# Eval("EmployeeTypeID") %>' CssClass="fas fa-edit text-warning" runat="server"></asp:LinkButton>
-                        </ItemTemplate>
+                            <%--<asp:LinkButton ID="btnEdit" CommandName="EditRecord" CommandArgument='<%# Eval("EmployeeTypeID") %>' CssClass="fas fa-edit text-warning" runat="server"></asp:LinkButton>--%>
+                        <%--</ItemTemplate>
 
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                 </Columns>
             </asp:GridView>
         </div>

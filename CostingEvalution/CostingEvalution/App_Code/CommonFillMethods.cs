@@ -96,7 +96,7 @@ namespace CostingEvalution.App_Code
             DataTable dt = balMST_RawMaterial.SelectForDropDown();
             if (dt != null && dt.Rows.Count > 0)
             {
-                ddl.DataValueField = "RawMaterialId";
+                ddl.DataValueField = "RawMaterialID";
                 ddl.DataTextField = "RawMaterialName";
                 ddl.DataSource = dt;
                 ddl.DataBind();
@@ -104,6 +104,38 @@ namespace CostingEvalution.App_Code
             }
         }
         #endregion Raw Material DropDown
+
+        #region Department DropDown
+        public static void FillDropDownListDepartment(ListBox ddl)
+        {
+            MST_DepartmentBAL balMST_Department = new MST_DepartmentBAL();
+            DataTable dt = balMST_Department.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "DepartmentID";
+                ddl.DataTextField = "DepartmentName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                //ddl.Items.Insert(0, new ListItem("Select Department", "-1"));
+            }
+        }
+        #endregion Department DropDown
+
+        #region Employee Type DropDown
+        public static void FillDropDownListEmployeeType(DropDownList ddl)
+        {
+            EMP_EmployeeTypeBAL balEMP_EmployeeType = new EMP_EmployeeTypeBAL();
+            DataTable dt = balEMP_EmployeeType.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "EmployeeTypeID";
+                ddl.DataTextField = "EmployeeTypeName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select Employee Type", "-1"));
+            }
+        }
+        #endregion Employee Type DropDown
 
     }
 }
