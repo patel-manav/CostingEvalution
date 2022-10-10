@@ -203,7 +203,7 @@ namespace CostingEvalution.App_Code.DAL
         #region Select Operation
         
         #region Select
-        public DataTable Select()
+        public DataTable Select(SqlInt32 MainModelID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -217,8 +217,9 @@ namespace CostingEvalution.App_Code.DAL
                         #region Prepare Command
                         objCmd.CommandType = CommandType.StoredProcedure;
                         objCmd.CommandText = "SP_PRD_MainModelWiseQuestion_Select";
+                        objCmd.Parameters.AddWithValue("@MainModelID", MainModelID);
 
-                        
+
                         #endregion Prepare Command
 
                         #region ReadData and Set Controls

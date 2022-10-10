@@ -94,10 +94,10 @@ namespace CostingEvalution.App_Code.BAL
         #region Select Operation
 
         #region Select
-        public DataTable Select()
+        public DataTable Select(SqlInt32 MainModelID)
         {
             PRD_MainModelWiseQuestionDAL dalPRD_MainModelWiseQuestion = new PRD_MainModelWiseQuestionDAL();
-            return dalPRD_MainModelWiseQuestion.Select();
+            return dalPRD_MainModelWiseQuestion.Select(MainModelID);
         }
         #endregion Select
 

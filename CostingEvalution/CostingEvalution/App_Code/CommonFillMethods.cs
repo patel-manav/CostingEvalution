@@ -73,8 +73,24 @@ namespace CostingEvalution.App_Code
         }
         #endregion Question DropDown
 
+        #region MainModel ListBox
+        public static void FillListBoxMainModel(ListBox ddl)
+        {
+            PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
+            DataTable dt = balPRD_MainModel.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "MainModelID";
+                ddl.DataTextField = "MainModelName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select MainModel", "-1"));
+            }
+        }
+        #endregion MainModel ListBox
+
         #region MainModel DropDown
-        public static void FillDropDownListMainModel(ListBox ddl)
+        public static void FillDropDownListMainMosdel(DropDownList ddl)
         {
             PRD_MainModelBAL balPRD_MainModel = new PRD_MainModelBAL();
             DataTable dt = balPRD_MainModel.SelectForDropDown();
@@ -136,6 +152,22 @@ namespace CostingEvalution.App_Code
             }
         }
         #endregion Employee Type DropDown
+
+        #region ItemType DropDown
+        public static void FillDropDownListItem(DropDownList ddl)
+        {
+            ITM_ItemBAL balITM_Item = new ITM_ItemBAL();
+            DataTable dt = balITM_Item.SelectForDropDown();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl.DataValueField = "ItemID";
+                ddl.DataTextField = "ItemName";
+                ddl.DataSource = dt;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Select Item", "-1"));
+            }
+        }
+        #endregion ItemType DropDown
 
     }
 }

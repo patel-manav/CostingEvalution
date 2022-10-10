@@ -92,7 +92,7 @@ namespace CostingEvalution.AdminPanel.Item
         private void FillDropDownList()
         {
             CommonFillMethods.FillDropDownListItemType(ddlItemType);
-            CommonFillMethods.FillDropDownListMainModel(lbMainModel);
+            CommonFillMethods.FillListBoxMainModel(lbMainModel);
         }
         #endregion FillDropDownList
 
