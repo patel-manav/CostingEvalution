@@ -62,6 +62,7 @@ namespace CostingEvalution.AdminPanel.Costing
             {
                 rpQuestionList.DataSource = dt;
                 rpQuestionList.DataBind();
+                
             }
         }
         #endregion Fill Question

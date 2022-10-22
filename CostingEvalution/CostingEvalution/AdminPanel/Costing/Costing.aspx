@@ -28,15 +28,11 @@
         <div class="col-md-12 table-responsive">
             <table class="table table-hover" border="1">
                 <tr>
-                    <th class="col-md-1 text-center">
-                        Sr No.
+                    <th class="col-md-1 text-center">Sr No.
                     </th>
-                    <th class="col-md-3 text-center">
-                        Question List
+                    <th class="col-md-3 text-center">Question List
                     </th>
-                    <th>
-
-                    </th>
+                    <th></th>
                 </tr>
                 <tbody>
                     <%--<asp:Repeater ID="rpQuestionList" runat="server" OnItemDataBound="QuestionList_ItemDataBound">--%>
